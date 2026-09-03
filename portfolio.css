@@ -1,41 +1,60 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     list-style: none;
     scroll-behavior: smooth;
     text-decoration: none;
-    
 }
 
-:root{
+:root {
+    /* TEXT */
     --text-color: #f5f5f5;
-    --hover-color: #12f7ff;
-    --bg-color:#22061f;
-    --secon-bg-color: #292e33;
+    --muted-text: #9aa38f;
+
+    /* LEMON ACCENT */
+    --hover-color: #d9ff00;
+
+    /* DARK BACKGROUNDS */
+    --bg-color: #080b0a;
+    --secondary-bg-color: #111510;
+    --card-bg: #101410;
+
+    /* FONT SIZES */
     --big-font: 2.5rem;
-    --norma-font: 2rem;
-    --neon-box-shadow:0 0 .5rem #12f7ff;
+    --normal-font: 2rem;
     --h2-font: 3rem;
-    --font-neon-text-shadoww: 0 0 10px rgba(18, 247, 255, 0.3),
-    0 0 20px rgba(18, 247, 255, 0.3),
-    0 0 30px rgba(18, 247, 255, 0.3),
-    0 0 40px rgba(18, 247, 255, 0.3),
-    0 0 70px rgba(18, 247, 255, 0.3),
-    0 0 80px rgba(18, 247, 255, 0.3),
-    0 0 100px rgba(18, 247, 255, 0.3),
-    0 0 150px rgba(18, 247, 255, 0.3);
+
+    /* LEMON GLOW */
+    --neon-box-shadow:
+        0 0 8px rgba(217, 255, 0, 0.45),
+        0 0 20px rgba(217, 255, 0, 0.18);
+
+    --lemon-text-shadow:
+        0 0 8px rgba(217, 255, 0, 0.55),
+        0 0 18px rgba(217, 255, 0, 0.25),
+        0 0 35px rgba(217, 255, 0, 0.12);
 }
 
-body{
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
     font-family: "Poppins", sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    
+    overflow-x: hidden;
 }
+
 
 /* =========================================================
    HERO SECTION
@@ -47,9 +66,19 @@ body{
     overflow: hidden;
 
     background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(rgba(5,8,7,0.82), rgba(5,8,7,0.82)),
+        linear-gradient(
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            rgba(5, 8, 7, 0.84),
+            rgba(5, 8, 7, 0.84)
+        ),
         url("images/bg.png");
 
     background-size:
@@ -72,7 +101,9 @@ body{
 }
 
 
-/* PURPLE / GREEN GLOW */
+/* =========================================================
+   HERO LEMON GLOW
+========================================================= */
 
 .hero-section::before {
     content: "";
@@ -83,19 +114,21 @@ body{
 
     background:
         radial-gradient(
-            circle at 78% 48%,
-            rgba(75, 55, 145, 0.25),
-            transparent 38%
+            circle at 75% 45%,
+            rgba(217, 255, 0, 0.09),
+            transparent 34%
         ),
         radial-gradient(
-            circle at 18% 90%,
-            rgba(20, 160, 70, 0.07),
-            transparent 32%
+            circle at 15% 85%,
+            rgba(150, 190, 0, 0.05),
+            transparent 30%
         );
 }
 
 
-/* VERY SUBTLE DARK OVERLAY */
+/* =========================================================
+   HERO DARK OVERLAY
+========================================================= */
 
 .hero-section::after {
     content: "";
@@ -108,7 +141,9 @@ body{
 }
 
 
-/* KEEP CONTENT ABOVE BACKGROUND */
+/* =========================================================
+   CONTENT ABOVE BACKGROUND
+========================================================= */
 
 .hero-section header,
 .hero-section .home {
@@ -117,137 +152,259 @@ body{
 }
 
 
-header{
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     width: 100%;
+
     padding: 20px 10%;
 }
 
-.logo{
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
     font-size: 26px;
     font-weight: 700;
     letter-spacing: 1px;
-    opacity: 0;
-    animation: slideRight 1s ease forwards;
-    animation-delay: .1s;
-}
 
-span{
-    color: var(--hover-color);
-}
-
-.navlist{
-    display: flex;
-}
-
-.navlist a{
     color: var(--text-color);
-    font-weight: 500;
-    padding: 10px 20px;
+
     opacity: 0;
-    animation: slideTop .5s ease  forwards;
-    animation-delay: calc(.2s * var(--1));
+
+    animation: slideRight 1s ease forwards;
+    animation-delay: 0.1s;
 }
 
-.navlist a:hover{
+.logo span {
     color: var(--hover-color);
-    text-shadow: 0 0 10px rgba(18, 247, 255, 0.6),
-    0 0 20px rgba(18, 247, 255, 0.6),
-    0 0 30px rgba(18, 247, 255, 0.6),
-    0 0 40px rgba(18, 247, 255, 0.6),
-    0 0 70px rgba(18, 247, 255, 0.6),
-    0 0 80px rgba(18, 247, 255, 0.6),
-    0 0 100px rgba(18, 247, 255, 0.6),
-    0 0 150px rgba(18, 247, 255, 0.6);
+
+    text-shadow:
+        0 0 8px rgba(217, 255, 0, 0.4);
 }
 
-#menu-icon{
-    font-size: 1.8rem;
-    z-index: 10001;
-    cursor: pointer;
-    margin-left: 25px;
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navlist {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.navlist a {
+    position: relative;
+
+    color: var(--text-color);
+
+    font-size: 14px;
+    font-weight: 500;
+
+    padding: 10px 18px;
+
+    opacity: 0;
+
+    animation: slideTop 0.5s ease forwards;
+    animation-delay: calc(0.2s * var(--1));
+
+    transition: 0.3s ease;
+}
+
+.navlist a:hover {
+    color: var(--hover-color);
+
+    text-shadow:
+        0 0 8px rgba(217, 255, 0, 0.55),
+        0 0 18px rgba(217, 255, 0, 0.25);
+}
+
+
+/* SMALL LEMON LINE UNDER NAV */
+
+.navlist a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 3px;
+
+    width: 0;
+    height: 2px;
+
     background: var(--hover-color);
-    border-radius: 3px;
-    color: var(--secon-bg-color);
+
+    transform: translateX(-50%);
+
+    box-shadow:
+        0 0 8px rgba(217, 255, 0, 0.6);
+
+    transition: 0.3s ease;
+}
+
+.navlist a:hover::after {
+    width: 35%;
+}
+
+
+/* =========================================================
+   MENU ICON
+========================================================= */
+
+#menu-icon {
+    font-size: 1.8rem;
+
+    z-index: 10001;
+
+    cursor: pointer;
+
+    margin-left: 25px;
+
+    padding: 5px 8px;
+
+    background: var(--hover-color);
+
+    border-radius: 4px;
+
+    color: var(--bg-color);
+
     display: none;
 }
 
-section{
+
+/* =========================================================
+   GENERAL SECTION
+========================================================= */
+
+section {
     padding: 100px 10%;
 }
+
+
+/* =========================================================
+   HOME SECTION
+========================================================= */
+
+.home {
+    min-height: calc(100vh - 85px);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 25px 10%;
+}
+
+
+/* =========================================================
+   HOME CONTENT
+========================================================= */
+
+.home-content {
+    width: 100%;
+    max-width: 850px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE CONTAINER
+========================================================= */
+
+.home-image {
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
 
 /* =========================================================
    PROFILE IMAGE
 ========================================================= */
 
-.home-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-
 .profile-image {
-    width: 200px;
-    height: 200px;
+    width: 190px;
+    height: 190px;
+
     border-radius: 50%;
+
     overflow: hidden;
-    border: 4px solid #ffffff;
-    box-shadow:
-        0 0 10px #12f7ff,
-        0 0 20px #12f7ff,
-        0 0 35px rgba(18, 247, 255, 0.5);
+
+    border: 3px solid var(--hover-color);
+
     background: var(--bg-color);
+
+    box-shadow:
+        0 0 10px rgba(217, 255, 0, 0.65),
+        0 0 25px rgba(217, 255, 0, 0.35),
+        0 0 50px rgba(217, 255, 0, 0.15);
+
     position: relative;
+
+    transition: 0.4s ease;
 }
 
 
-/* Actual photo */
+/* PROFILE IMAGE RING */
+
+.profile-image::before {
+    content: "";
+
+    position: absolute;
+    inset: -8px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(217, 255, 0, 0.2);
+
+    pointer-events: none;
+}
+
+
+/* ACTUAL IMAGE */
 
 .profile-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;    
+
+    object-fit: cover;
+
+    display: block;
 }
 
 
-/* Hover effect */
+/* PROFILE HOVER */
 
 .profile-image:hover {
     transform: scale(1.05);
+
     box-shadow:
-        0 0 10px #12f7ff,
-        0 0 25px #12f7ff,
-        0 0 45px #12f7ff;
-    transition: 0.4s ease;
-}
-/* =========================================================
-   HOME / HERO SECTION
-========================================================= */
-
-.home {
-    min-height: calc(50vh - 500px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px 10%;
-    box-sizing: border-box;
-}
-
-
-/* Main content */
-
-.home-content {
-    width: 100%;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
+        0 0 12px rgba(217, 255, 0, 0.75),
+        0 0 30px rgba(217, 255, 0, 0.45),
+        0 0 55px rgba(217, 255, 0, 0.2);
 }
 
 
@@ -255,249 +412,575 @@ section{
    MAIN HEADING
 ========================================================= */
 
-.home-content h1 span{
+.home-content h1 {
     font-size: var(--big-font);
+
     font-weight: 700;
-    margin: 0 0 15px;
-    text-align: center;
+
+    line-height: 1.2;
+
+    margin-bottom: 15px;
+
+    color: var(--text-color);
+
     opacity: 0;
-    animation: slideBottom .5s ease forwards;
-    animation-delay: 1s;
+
+    animation: slideBottom 0.5s ease forwards;
+    animation-delay: 0.8s;
+}
+
+
+/* NAME */
+
+#typing-name {
+    color: var(--hover-color);
+
+    text-shadow: var(--lemon-text-shadow);
+}
+
+
+/* TYPING CURSOR */
+
+#typing-name::after {
+    content: "|";
+
+    color: var(--hover-color);
+
+    margin-left: 3px;
+
+    animation: blink 0.7s infinite;
 }
 
 
 /* =========================================================
-   CHANGING TEXT
+   BLINK ANIMATION
+========================================================= */
+
+@keyframes blink {
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   CHANGE TEXT
 ========================================================= */
 
 .change-text {
     display: flex;
+
     justify-content: center;
     align-items: center;
 
     width: 100%;
 
-    font-size: 1.5rem;
+    font-size: 1.35rem;
+
     font-weight: 600;
 
     margin-bottom: 20px;
+
+    opacity: 0;
+
+    animation: slideBottom 0.5s ease forwards;
+    animation-delay: 1s;
 }
 
 
-/* "And I'm a" */
+/* "AND I'M A" */
 
 .change-text h3 {
     display: inline-flex;
+
     justify-content: center;
     align-items: center;
+
     margin: 0;
+
+    color: var(--text-color);
+
+    font-size: inherit;
 }
 
-#typing-name::after {
-    content: "|";
-    animation: blink 0.7s infinite;
-}
 
-@keyframes blink {
-    0%, 50% {
-        opacity: 1;
-    }
-
-    51%, 100% {
-        opacity: 0;
-    }
-}
-
-/* =========================================================
-   ANIMATED WORDS
-========================================================= */
+/* WORD CONTAINER */
 
 .change-text h3:nth-child(2) {
     position: relative;
-    min-width: 300px;
+
+    min-width: 310px;
+
     justify-content: flex-start;
+
     margin-left: 8px;
 }
 
+
+/* ANIMATED WORD */
+
 .change-text h3 .word {
     position: absolute;
+
     display: flex;
+
     opacity: 0;
+
+    color: var(--hover-color);
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 8px rgba(217, 255, 0, 0.5),
+        0 0 18px rgba(217, 255, 0, 0.2);
+}
+
+
+/* LETTER ANIMATION */
+
+.change-text h3 .word .letter {
+    transform-origin: center center 25px;
+}
+
+
+/* LETTER OUT */
+
+.change-text h3 .word .letter.out {
+    transform: rotateX(90deg);
+
+    transition:
+        0.32s cubic-bezier(0.6, 0, 0.7, 0.2);
+}
+
+
+/* LETTER IN */
+
+.change-text h3 .word .letter.in {
+    transition: 0.38s ease;
+}
+
+
+/* LETTER BEHIND */
+
+.change-text h3 .word .letter.behind {
+    transform: rotateX(-90deg);
 }
 
 
 /* =========================================================
    DESCRIPTION
 ========================================================= */
+
 .home-content p {
     max-width: 700px;
-    color: #ffffff;
+
+    color: #d3d8ce;
+
     line-height: 1.7;
-    font-size: 1rem;
+
+    font-size: 0.95rem;
+
     text-align: center;
+
     margin: 0 auto 25px;
+
     opacity: 0;
-    animation: slideLeft .5s ease forwards;
-    animation-delay: .7s;
+
+    animation: slideLeft 0.5s ease forwards;
+    animation-delay: 0.7s;
 }
 
 
 /* =========================================================
-   BUTTONS
+   BUTTON CONTAINER
 ========================================================= */
-.home-content .btn-box {
+
+.btn-box {
     display: flex;
+
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    width: 550px;
-    height: 50px;
+
+    gap: 12px;
+
+    width: 100%;
+
+    max-width: 620px;
+
+    min-height: 48px;
+
     margin: 10px auto 0;
 }
 
 
-.home-content h1{
-    font-size: var(--big-font);
-    font-weight: 700;
-    opacity: 0;
-    animation: slideBottom .5s ease  forwards;
-    animation-delay: 1s;
-    
-}
+/* =========================================================
+   BUTTON
+========================================================= */
 
-.change-text{
-    font-size: 1.5rem;
-    font-weight: 600;
-}
+.btn-box a.btn {
+    flex: 1;
 
-.change-text h3{
+    max-width: 180px;
+
+    height: 48px;
+
     display: inline-flex;
-    margin: 0;
-    vertical-align: top;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 14px;
+
+    background: var(--hover-color);
+
+    color: var(--bg-color);
+
+    font-size: 0.82rem;
+
+    letter-spacing: 0.4px;
+
+    font-weight: 700;
+
+    border-radius: 5px;
+
+    border: 1px solid var(--hover-color);
+
+    position: relative;
+
+    overflow: hidden;
+
+    z-index: 1;
+
+    box-shadow:
+        0 0 8px rgba(217, 255, 0, 0.4);
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.change-text h3 .word{
+
+/* BUTTON DARK SLIDE */
+
+.btn-box a.btn::before {
+    content: "";
+
     position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 100%;
+
+    background: var(--bg-color);
+
+    z-index: -1;
+
+    transition: 0.4s ease;
+}
+
+
+/* BUTTON HOVER */
+
+.btn-box a.btn:hover {
+    color: var(--hover-color);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 12px rgba(217, 255, 0, 0.6),
+        0 0 25px rgba(217, 255, 0, 0.2);
+}
+
+
+.btn-box a.btn:hover::before {
+    width: 100%;
+}
+
+
+/* =========================================================
+   SECOND BUTTON
+========================================================= */
+
+.btn-box a.btn:nth-child(2) {
+    background: transparent;
+
+    color: var(--hover-color);
+}
+
+
+.btn-box a.btn:nth-child(2)::before {
+    background: var(--hover-color);
+}
+
+
+.btn-box a.btn:nth-child(2):hover {
+    color: var(--bg-color);
+}
+
+
+/* =========================================================
+   THIRD BUTTON
+========================================================= */
+
+.btn-box a.btn:nth-child(3) {
+    background: transparent;
+
+    color: var(--hover-color);
+}
+
+
+.btn-box a.btn:nth-child(3)::before {
+    background: var(--hover-color);
+}
+
+
+.btn-box a.btn:nth-child(3):hover {
+    color: var(--bg-color);
+}
+
+
+/* =========================================================
+   OLD IMAGE BOX SUPPORT
+========================================================= */
+
+.image-box {
+    text-align: center;
+
+    padding-bottom: 1px;
+}
+
+
+.image-box img {
+    width: 90%;
+
+    height: auto;
+
+    filter:
+        drop-shadow(0 0 8px rgba(217, 255, 0, 0.55))
+        drop-shadow(0 0 16px rgba(217, 255, 0, 0.3))
+        drop-shadow(0 0 24px rgba(217, 255, 0, 0.15));
+}
+
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+
+.info-box {
     display: flex;
-    opacity: 0;
-}
 
-.change-text h3 .word .letter{
-    transform-origin: center center 25px;
-}
-
-.change-text h3 .word .letter.out{
-    transform: rotateX(90deg);
-    transition: 0.32s cubic-bezier(0.6,0,0.7,0.2);
-}
-
-.change-text h3 .word .letter.in{
-    transition: 0.38s ease;
-}
-
-.change-text h3 .word .letter.behind{
-    transform: rotateX(-90deg);
-}
-
-.home-content p{
-    color: #ffffff;
-    line-height: 1.6;
-    animation: slideLeft .5s ease  forwards;
-    animation-delay: .7s;
-}
-
-.info-box{
-    display: flex;
     justify-content: space-between;
     align-items: center;
+
     width: 300px;
+
     margin: 1rem 0 2rem;
 }
 
 
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 
+@keyframes slideRight {
+    0% {
+        opacity: 0;
 
-.btn-box{
-    display: flex;
-    justify-content: space-between;
-    width: 320px;
-    height: 45px;
-}
+        transform: translateX(-100px);
+    }
 
-.btn-box a.btn{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
-    height: 100%;
-    background: var(--hover-color);
-    color: var(--bg-color);
-    font-size: 1rem;
-    letter-spacing: 1px;
-    font-weight: 600;
-    transition: .6s;
-    box-shadow: var(--neon-box-shadow);
-    border-radius: 5px;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    border: 2px solid var(--hover-color);
-}
+    100% {
+        opacity: 1;
 
-a.btn:hover{
-    color: var(--hover-color);
-}
-
-a.btn::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: var(--bg-color);
-    width: 0;
-    height: 100%;
-    z-index: -1;
-    transition: .4s;
-}
-
-a.btn:hover::before{
-    width: 100%;
-}
-
-a.btn:nth-child(2){
-    background: var(--bg-color);
-    color: var(--hover-color);
-}
-
-a.btn:nth-child(2):hover{
-    color: var(--bg-color);
-}
-
-a.btn:nth-child(2)::before{
-    background: var(--hover-color);
+        transform: translateX(0);
+    }
 }
 
 
+@keyframes slideTop {
+    0% {
+        opacity: 0;
 
-.home-image{
-    position: relative;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
 }
 
-.image-box{
-    text-align: center;
-    padding-bottom: 1px;
+
+@keyframes slideBottom {
+    0% {
+        opacity: 0;
+
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
 }
 
-.image-box img {
-    width: 90%;
-    height: auto;
 
-    filter:
-        drop-shadow(0 0 8px #12f7ff)
-        drop-shadow(0 0 16px #12f7ff)
-        drop-shadow(0 0 24px #12f7ff);
+@keyframes slideLeft {
+    0% {
+        opacity: 0;
+
+        transform: translateX(-40px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform: translateX(0);
+    }
 }
 
+
+/* =========================================================
+   MOBILE RESPONSIVENESS
+========================================================= */
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 18px 6%;
+    }
+
+    .navlist {
+        display: none;
+    }
+
+    #menu-icon {
+        display: block;
+    }
+
+    section {
+        padding: 80px 6%;
+    }
+
+    .home {
+        min-height: calc(100vh - 75px);
+
+        padding: 20px 6%;
+    }
+
+    .profile-image {
+        width: 165px;
+        height: 165px;
+    }
+
+    .home-content h1 {
+        font-size: 2rem;
+    }
+
+    .change-text {
+        font-size: 1.1rem;
+
+        flex-wrap: wrap;
+
+        gap: 4px;
+    }
+
+    .change-text h3:nth-child(2) {
+        min-width: 240px;
+
+        margin-left: 4px;
+    }
+
+    .home-content p {
+        font-size: 0.88rem;
+
+        line-height: 1.7;
+
+        max-width: 95%;
+    }
+
+    .btn-box {
+        flex-wrap: wrap;
+
+        height: auto;
+
+        max-width: 400px;
+    }
+
+    .btn-box a.btn {
+        flex: 1 1 30%;
+
+        min-width: 120px;
+
+        height: 45px;
+
+        font-size: 0.75rem;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+    header {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .home {
+        padding: 25px 5%;
+    }
+
+    .profile-image {
+        width: 145px;
+        height: 145px;
+    }
+
+    .home-content h1 {
+        font-size: 1.75rem;
+    }
+
+    .change-text {
+        font-size: 1rem;
+    }
+
+    .change-text h3:nth-child(2) {
+        min-width: 210px;
+    }
+
+    .home-content p {
+        font-size: 0.82rem;
+    }
+
+    .btn-box {
+        gap: 8px;
+    }
+
+    .btn-box a.btn {
+        min-width: 100px;
+
+        height: 43px;
+
+        font-size: 0.7rem;
+    }
+}
 
 /* =========================================================
    ABOUT SECTION
@@ -1845,6 +2328,103 @@ a.btn:nth-child(2)::before{
 }
 
 
+/* ==============================
+   TESTIMONIAL CARD
+============================== */
+
+.testimonial-card {
+    width: 100%;
+    padding: 28px;
+    margin-bottom: 35px;
+
+    box-sizing: border-box;
+
+    background: rgba(10, 18, 32, 0.75);
+
+    border: 1px solid rgba(100, 130, 180, 0.18);
+    border-radius: 16px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.15),
+        inset 0 0 25px rgba(80, 100, 255, 0.02);
+}
+
+
+/* QUOTE */
+
+.quote-icon {
+    font-size: 52px;
+    line-height: 35px;
+    font-weight: 700;
+
+    color: #6675ff;
+
+    margin-bottom: 15px;
+}
+
+
+/* TESTIMONIAL TEXT */
+
+.testimonial-text {
+    margin: 0 0 25px;
+
+    color: #a8b1c1;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* PERSON */
+
+.testimonial-person {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* AVATAR */
+.person-avatar {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    box-shadow: 0 0 15px rgba(116, 108, 255, 0.25);
+}
+
+.person-avatar img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+}
+
+/* NAME */
+
+.testimonial-person h4 {
+    margin: 0 0 3px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* ROLE */
+
+.testimonial-person span {
+    color: #737f94;
+
+    font-size: 10px;
+}
+
 /* =========================================================
    CONTACT HEADER
 ========================================================= */
@@ -1899,14 +2479,10 @@ a.btn:nth-child(2)::before{
 .contact-container {
     width: 100%;
     max-width: 1200px;
-
     margin: 0 auto;
-
     display: grid;
     grid-template-columns: 1fr 1fr;
-
     gap: 90px;
-
     align-items: start;
 }
 
