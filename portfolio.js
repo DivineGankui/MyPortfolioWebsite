@@ -48,6 +48,14 @@ function typeName() {
 }
 typeName();
 
+//menu toggle
+const menuIcon = document.getElementById("menu-icon");
+const navList = document.querySelector(".navlist");
+
+menuIcon.addEventListener("click", () => {
+    navList.classList.toggle("active");
+});
+
 
 
 
@@ -94,3 +102,64 @@ circles.forEach(elem=>{
         
     }
 })
+
+
+
+//emailjs
+    // Initialize EmailJS
+    (function () {
+        emailjs.init({
+            publicKey: "-z2M4WgpboMUqBJKb"
+        });
+    })();
+
+
+    // Contact form
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const form = this;
+        const button = document.querySelector(".send-message-btn");
+
+        // Change button while sending
+        button.textContent = "Sending...";
+        button.disabled = true;
+
+
+        emailjs.sendForm(
+            "service_xe8s6dd",
+            "template_b8neoeq",
+            form
+        )
+
+        .then(function() {
+
+            // Success message
+            button.textContent = "✓ Message Sent Successfully!";
+
+            // Clear form
+            form.reset();
+
+            // Return button to normal after 3 seconds
+            setTimeout(function() {
+                button.textContent = "Send Message";
+                button.disabled = false;
+            }, 3000);
+
+        })
+
+        .catch(function(error) {
+
+            console.error("EmailJS Error:", error);
+
+            button.textContent = "Failed to Send";
+
+            setTimeout(function() {
+                button.textContent = "Send Message";
+                button.disabled = false;
+            }, 3000);
+
+        });
+
+    });
