@@ -50,15 +50,26 @@ typeName();
 
 
 // ==================== MENU TOGGLE ====================
-const menuIcon = document.getElementById("menu-icon");
-const navList = document.querySelector(".navlist");
-if (menuIcon && navList) {
+    const menuIcon = document.getElementById("menu-icon");
+    const navList = document.getElementById("navlist");
 
-    menuIcon.addEventListener("click", function () {
+    menuIcon.addEventListener("click", () => {
         navList.classList.toggle("active");
+
+        if (navList.classList.contains("active")) {
+            menuIcon.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        } else {
+            menuIcon.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        }
     });
 
-}
+    // Close menu when a navigation link is clicked
+    document.querySelectorAll(".navlist a").forEach(link => {
+        link.addEventListener("click", () => {
+            navList.classList.remove("active");
+            menuIcon.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        });
+    });
 
 
 
