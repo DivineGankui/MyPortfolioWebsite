@@ -48,14 +48,17 @@ function typeName() {
 }
 typeName();
 
-//menu toggle
+
+// ==================== MENU TOGGLE ====================
 const menuIcon = document.getElementById("menu-icon");
 const navList = document.querySelector(".navlist");
+if (menuIcon && navList) {
 
-menuIcon.addEventListener("click", () => {
-    navList.classList.toggle("active");
-});
+    menuIcon.addEventListener("click", function () {
+        navList.classList.toggle("active");
+    });
 
+}
 
 
 
@@ -104,58 +107,66 @@ circles.forEach(elem=>{
 })
 
 
+// ==================== EMAILJS ====================
 
-//emailjs
-    // Initialize EmailJS
-    (function () {
-        emailjs.init({
-            publicKey: "-z2M4WgpboMUqBJKb"
-        });
-    })();
+// Initialize EmailJS
+(function () {
+    emailjs.init({
+        publicKey: "-z2M4WgpboMUqBJKb"
+    });
+})();
 
+// Get the contact form
+const contactForm = document.getElementById("contact-form");
 
-    // Contact form
-    document.getElementById("contact-form").addEventListener("submit", function(event) {
+// Check if the form exists
+if (contactForm) {
 
+    contactForm.addEventListener("submit", function (event) {
+
+        // Prevent the page from refreshing/jumping to Home
         event.preventDefault();
+        event.stopPropagation();
 
-        const form = this;
-        const button = document.querySelector(".send-message-btn");
+        const button = contactForm.querySelector(".send-message-btn");
 
-        // Change button while sending
+        // Show sending status
         button.textContent = "Sending...";
         button.disabled = true;
 
-
+        // Send form through EmailJS
         emailjs.sendForm(
             "service_xe8s6dd",
             "template_b8neoeq",
-            form
+            contactForm
         )
 
-        .then(function() {
+        .then(function (response) {
+
+            console.log("SUCCESS:", response.status, response.text);
 
             // Success message
             button.textContent = "✓ Message Sent Successfully!";
 
-            // Clear form
-            form.reset();
+            // Clear the form
+            contactForm.reset();
 
-            // Return button to normal after 3 seconds
-            setTimeout(function() {
+            // Return button to normal
+            setTimeout(function () {
                 button.textContent = "Send Message";
                 button.disabled = false;
             }, 3000);
 
         })
 
-        .catch(function(error) {
+        .catch(function (error) {
 
-            console.error("EmailJS Error:", error);
+            console.error("EMAILJS ERROR:", error);
 
+            // Error message
             button.textContent = "Failed to Send";
 
-            setTimeout(function() {
+            setTimeout(function () {
                 button.textContent = "Send Message";
                 button.disabled = false;
             }, 3000);
@@ -163,3 +174,5 @@ circles.forEach(elem=>{
         });
 
     });
+
+}
