@@ -16,13 +16,13 @@
 
 :root {
     /* TEXT COLORS */
-    --text-color: #f5f5f5;
-    --muted-text: #a5aaa0;
+    --text-color: #ffffff;
+    --muted-text: #b8b8b8;
 
-    /* LEMON ACCENT */
+    /* LEMON ACCENT - WRITING ONLY */
     --hover-color: #d9ff00;
 
-    /* DARK COLORS */
+    /* DARK BACKGROUNDS */
     --bg-color: #080b0a;
     --secondary-bg-color: #111510;
     --card-bg: #101410;
@@ -54,71 +54,43 @@ body {
     position: relative;
     min-height: 100vh;
     overflow: hidden;
-
     background-image:
         linear-gradient(
-            rgba(255, 255, 255, 0.035) 1px,
-            transparent 1px
-        ),
+            rgba(255, 255, 255, 0.035) 1px, transparent 1px ),
         linear-gradient(
             90deg,
-            rgba(255, 255, 255, 0.035) 1px,
-            transparent 1px
-        ),
+            rgba(255, 255, 255, 0.035) 1px, transparent 1px ),
         linear-gradient(
             rgba(5, 8, 7, 0.86),
-            rgba(5, 8, 7, 0.86)
-        ),
-        url("images/bg.png");
+            rgba(5, 8, 7, 0.86)), url("images/bg.png");
 
     background-size:
-        65px 65px,
-        65px 65px,
-        cover,
-        cover;
-
-    background-position:
-        center,
-        center,
-        center,
-        center;
-
-    background-repeat:
-        repeat,
-        repeat,
-        no-repeat,
-        no-repeat;
+        65px 65px, 65px 65px, cover, cover;
+        background-position: center, center, center, center;
+        background-repeat: repeat, repeat, no-repeat, no-repeat;
 }
-
 
 /* =========================================================
    HEADER
 ========================================================= */
-
 header {
     position: relative;
     z-index: 10;
-
     width: 100%;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 20px 10%;
 }
 
 /* =========================================================
    LOGO CONTAINER
 ========================================================= */
-
 .logo-container {
     display: flex;
     align-items: center;
     gap: 10px;
-
     opacity: 0;
-
     animation: slideRight 1s ease forwards;
     animation-delay: 0.1s;
 }
@@ -177,14 +149,12 @@ header {
 
 
 /* NAVIGATION HOVER */
-
 .navlist a:hover {
-    color: #efff66;
+    color: var(--hover-color);
 }
 
 
 /* SMALL LINE UNDER NAVIGATION */
-
 .navlist a::after {
     content: "";
     position: absolute;
@@ -201,23 +171,18 @@ header {
     width: 35%;
 }
 
-
 /* =========================================================
-   MENU ICON
+   MENU ICON - DESKTOP
 ========================================================= */
-
-/* =========================================================
-   MENU ICON - HIDDEN ON DESKTOP
-========================================================= */
-
-#menu-icon {
+.menu-icon {
     display: none;
     font-size: 1.8rem;
     cursor: pointer;
-    padding: 6px 9px;
+    padding: 8px 10px;
     background: #d9ff00;
     color: #080b0a;
-    border-radius: 6px;
+    border-radius: 7px;
+    line-height: 1;
     margin-left: 20px;
 }
 
@@ -225,19 +190,82 @@ header {
 /* =========================================================
    TABLET / PHONE VIEW
 ========================================================= */
-
 @media (max-width: 768px) {
 
-    /* Hide navigation */
+    /* ---------------- HEADER ---------------- */
+    header {
+        position: relative;
+        width: 100%;
+        padding: 15px 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+    }
+
+       /* ---------------- MENU ICON ---------------- */
+    .menu-icon {
+        display: block;
+        position: relative;
+        z-index: 1100;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 8px 10px;
+    background: transparent;
+color: #d9ff00;
+border: 1px solid #d9ff00;
+    line-height: 1;
+    margin-left: 20px;
+
+    }
+
+
+    /* ---------------- MOBILE NAVIGATION ---------------- */
     .navlist {
         display: none;
+        position: absolute;
+        top: 104px;
+        right: 4%;
+        width: 248px;
+        min-height: 416px;
+        padding: 22px 20px;
+          background: #080b0a;
+    border: 1px solid #ffffff;
+        border-radius: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0;
+        z-index: 1050;
     }
 
-    /* Show menu icon */
-    #menu-icon {
+
+    /* SHOW MENU */
+    .navlist.active {
+        display: flex;
+    }
+
+    /* ---------------- NAV ITEMS ---------------- */
+    .navlist li {
+        width: 100%;
+        list-style: none;
+        margin: 0;
+    }
+
+    .navlist li a {
         display: block;
+        width: 100%;
+        padding: 17px 20px;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: 0.3s ease;
     }
 
+    .navlist li a:hover {
+        color: #d9ff00;
+    }
 }
 
 
@@ -248,41 +276,75 @@ section {
     padding: 100px 10%;
 }
 
+/* ---------------- HOME SECTION ---------------- */
+    .home {
+        min-height: calc(100vh - 85px);
 
-/* =========================================================
-   HOME SECTION
-========================================================= */
-.home {
-    min-height: calc(100vh - 85px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px 10%;
-    padding-left: 35rem;
-}
+        display: flex;
+        flex-direction: column;
+
+        justify-content: flex-start;
+        align-items: center;
+
+        text-align: center;
+
+        padding: 50px 5% 30px;
+
+        /* IMPORTANT:
+           Remove the desktop 35rem padding */
+        padding-left: 5%;
+        padding-right: 5%;
+    }
 
 
-/* =========================================================
-   HOME CONTENT
-========================================================= */
+/* ---------------- PROFILE IMAGE ---------------- */
+    .home-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-.home-content {
-    width: 100%;
-    max-width: 850px;
+        margin-bottom: 20px;
+    }
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-    margin: 0 auto;
-}
+    .profile-image {
+        width: 185px;
+        height: 185px;
+        border-radius: 50%;
+
+        overflow: hidden;
+
+        border: 3px solid #ffffff;
+    }
+
+
+    .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+     /* ---------------- HOME TITLE ---------------- */
+    .home-content h1 {
+        font-size: 2.7rem;
+        line-height: 1.05;
+        margin: 0 auto 25px;
+        max-width: 380px;
+    }
+
+     /* ---------------- ROLE TEXT ---------------- */
+    .home-content h2,
+    .home-content h3 {
+        font-size: 1.6rem;
+        line-height: 1.1;
+        margin: 0 auto 10px;
+    }
 
 
 /* =========================================================
    PROFILE IMAGE CONTAINER
 ========================================================= */
-
 .home-image {
     position: relative;
     display: flex;
@@ -301,7 +363,7 @@ section {
     height: 190px;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid #ffff;
+    border: 3px solid #ffffff;
     position: relative;
     transition: 0.4s ease;
 }
@@ -310,7 +372,6 @@ section {
 /* =========================================================
    PROFILE IMAGE
 ========================================================= */
-
 .profile-image img {
     width: 100%;
     height: 100%;
@@ -321,7 +382,6 @@ section {
 
 
 /* PROFILE IMAGE HOVER */
-
 .profile-image:hover {
     transform: scale(1.05);
     border-color: #efff66;
@@ -354,7 +414,6 @@ h1{
 /* =========================================================
    TYPING NAME
 ========================================================= */
-
 #typing-name {
     color: #d9ff00;
 }
@@ -363,11 +422,10 @@ h1{
 /* =========================================================
    TYPING CURSOR
 ========================================================= */
-
 #typing-name::after {
     content: "|";
     color: #d9ff00;
-    margin-left: 4px;
+    margin-left: 2px;
     width: 100%;
     animation: blink 0.7s infinite;
 }
@@ -376,7 +434,6 @@ h1{
 /* =========================================================
    BLINK ANIMATION
 ========================================================= */
-
 @keyframes blink {
 
     0%,
@@ -394,7 +451,6 @@ h1{
 /* =========================================================
    CHANGE TEXT
 ========================================================= */
-
 .change-text {
     display: flex;
     justify-content: center;
@@ -412,17 +468,12 @@ h1{
 /* =========================================================
    CHANGE TEXT HEADINGS
 ========================================================= */
-
 .change-text h3 {
     display: inline-flex;
-
     justify-content: center;
     align-items: center;
-
     margin: 0;
-
     color: var(--text-color);
-
     font-size: inherit;
 }
 
@@ -430,14 +481,10 @@ h1{
 /* =========================================================
    ANIMATED WORD CONTAINER
 ========================================================= */
-
 .change-text h3:nth-child(2) {
     position: relative;
-
     min-width: 310px;
-
     justify-content: flex-start;
-
     margin-left: 8px;
 }
 
@@ -448,13 +495,9 @@ h1{
 
 .change-text h3 .word {
     position: absolute;
-
     display: flex;
-
     opacity: 0;
-
     color: var(--hover-color);
-
     white-space: nowrap;
 }
 
@@ -462,7 +505,6 @@ h1{
 /* =========================================================
    LETTER ANIMATION
 ========================================================= */
-
 .change-text h3 .word .letter {
     transform-origin: center center 25px;
 }
@@ -472,21 +514,18 @@ h1{
 
 .change-text h3 .word .letter.out {
     transform: rotateX(90deg);
-
     transition:
         0.32s cubic-bezier(0.6, 0, 0.7, 0.2);
 }
 
 
 /* LETTER IN */
-
 .change-text h3 .word .letter.in {
     transition: 0.38s ease;
 }
 
 
 /* LETTER BEHIND */
-
 .change-text h3 .word .letter.behind {
     transform: rotateX(-90deg);
 }
@@ -495,163 +534,18 @@ h1{
 /* =========================================================
    DESCRIPTION
 ========================================================= */
-
 .home-content p {
     max-width: 700px;
-
     color: #d3d8ce;
-
     line-height: 1.7;
-
     font-size: 0.95rem;
-
     text-align: center;
-
     margin: 0 auto 25px;
-
     opacity: 0;
-
     animation: slideLeft 0.5s ease forwards;
     animation-delay: 0.7s;
 }
 
-
-/* =========================================================
-   BUTTON CONTAINER
-========================================================= */
-
-.btn-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    min-height: 48px;
-    margin: 15px auto 0;
-}
-
-
-/* =========================================================
-   BUTTON
-========================================================= */
-
-.btn-box a.btn {
-    flex: 1;
-    max-width: 150px;
-    height: 48px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 14px;
-    background: var(--hover-color);
-    color: var(--bg-color);
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    border-radius: 5px;
-    border: 1px solid var(--hover-color);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    transition:
-        color 0.3s ease,
-        background 0.3s ease,
-        transform 0.3s ease,
-        border-color 0.3s ease;
-}
-
-
-/* =========================================================
-   BUTTON HOVER BACKGROUND
-========================================================= */
-
-.btn-box a.btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: var(--bg-color);
-    z-index: -1;
-    transition: 0.4s ease;
-}
-
-
-/* BUTTON HOVER */
-
-.btn-box a.btn:hover {
-    color: var(--hover-color);
-    transform: translateY(-3px);
-}
-
-.btn-box a.btn:hover::before {
-    width: 100%;
-}
-
-
-/* =========================================================
-   SECOND BUTTON
-========================================================= */
-
-.btn-box a.btn:nth-child(2) {
-    background: transparent;
-    color: var(--hover-color);
-}
-
-.btn-box a.btn:nth-child(2)::before {
-    background: var(--hover-color);
-}
-
-.btn-box a.btn:nth-child(2):hover {
-    color: var(--bg-color);
-}
-
-
-/* =========================================================
-   THIRD BUTTON
-========================================================= */
-
-.btn-box a.btn:nth-child(3) {
-    background: transparent;
-    color: var(--hover-color);
-}
-
-.btn-box a.btn:nth-child(3)::before {
-    background: var(--hover-color);
-}
-
-.btn-box a.btn:nth-child(3):hover {
-    color: var(--bg-color);
-}
-
-
-/* =========================================================
-   OLD IMAGE BOX SUPPORT
-========================================================= */
-
-.image-box {
-    text-align: center;
-    padding-bottom: 1px;
-}
-
-.image-box img {
-    width: 90%;
-    height: auto;
-    filter: none;
-}
-
-
-/* =========================================================
-   INFO BOX
-========================================================= */
-
-.info-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 300px;
-    margin: 1rem 0 2rem;
-}
 
 
 /* =========================================================
@@ -725,16 +619,13 @@ h1{
 /* =========================================================
    MOBILE RESPONSIVENESS
 ========================================================= */
-
 @media (max-width: 768px) {
 
     header {
         padding: 18px 6%;
     }
 
-
     /* MOBILE MENU */
-
     .navlist {
         display: none;
     }
@@ -745,23 +636,19 @@ h1{
 
 
     /* SECTION */
-
     section {
         padding: 80px 6%;
     }
 
 
     /* HOME */
-
     .home {
         min-height: calc(100vh - 75px);
-
         padding: 20px 6%;
     }
 
 
     /* PROFILE IMAGE */
-
     .profile-image {
         width: 165px;
         height: 165px;
@@ -769,25 +656,20 @@ h1{
 
 
     /* HEADING */
-
     .home-content h1 {
         font-size: 2rem;
     }
 
 
     /* CHANGE TEXT */
-
     .change-text {
         font-size: 1.1rem;
-
         flex-wrap: wrap;
-
         gap: 4px;
     }
 
     .change-text h3:nth-child(2) {
         min-width: 240px;
-
         margin-left: 4px;
     }
 
@@ -852,14 +734,12 @@ h1{
 
 
     /* HEADING */
-
     .home-content h1 {
         font-size: 1.75rem;
     }
 
 
     /* CHANGE TEXT */
-
     .change-text {
         font-size: 1rem;
     }
@@ -875,24 +755,40 @@ h1{
         font-size: 0.82rem;
     }
 
-
-    /* BUTTONS */
-
-    .btn-box {
-        gap: 8px;
-    }
-
-    .btn-box a.btn {
-        flex: 1 1 30%;
-        min-width: 10px;
-        height: 40px;
-        font-size: 0rem;
-    }
 }
+  /* BUTTONS */
+.btn-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 25px;
+    background: #d9ff00;
+    color: #080b0a;
+    border: 2px solid #d9ff00;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: transparent;
+    color: #d9ff00;
+    border-color: #d9ff00;
+}
+
 /* =========================================================
    ABOUT SECTION
 ========================================================= */
-
 .about-section {
     width: 100%;
     min-height: 100vh;
@@ -907,7 +803,6 @@ h1{
 /* =========================================================
    MAIN CONTAINER
 ========================================================= */
-
 .about-container {
     width: 100%;
     max-width: 1200px;
@@ -922,7 +817,6 @@ h1{
 /* =========================================================
    LEFT SIDE - IMAGE
 ========================================================= */
-
 .about-image {
     width: 48%;
     display: flex;
@@ -932,7 +826,6 @@ h1{
 
 
 /* Image container */
-
 .image-box {
     position: relative;
     width: 100%;
@@ -948,7 +841,6 @@ h1{
 
 
 /* Actual image */
-
 .image-box img {
     width: 100%;
     height: auto;
@@ -960,7 +852,6 @@ h1{
 /* =========================================================
    IMAGE GLOW
 ========================================================= */
-
 .image-glow {
     position: absolute;
     inset: 0;
@@ -974,7 +865,6 @@ h1{
 /* =========================================================
    RIGHT SIDE - CONTENT
 ========================================================= */
-
 .about-content {
     width: 52%;
     max-width: 620px;
@@ -982,12 +872,10 @@ h1{
 
 
 /* Main heading */
-
 .about-content h2 {
     font-family: "Cormorant Garamond", serif;
     font-style: italic;
     margin: 0 0 15px;
-    color: #;
     font-size: 2.2rem;
     font-weight: 700;
     line-height: 1.25;
@@ -995,9 +883,7 @@ h1{
 
 
 /* Cyan heading */
-
 .about-content h2 span {
-    
     display: block;
     color: #ffff;
     margin-top: 5px;
@@ -1007,7 +893,6 @@ h1{
 /* =========================================================
    TITLE LINE
 ========================================================= */
-
 .title-line {
     width: 100px;
     height: 3px;
@@ -1022,7 +907,6 @@ h1{
 /* =========================================================
    PARAGRAPHS
 ========================================================= */
-
 .about-content > p {
     color: #d4d8e0;
     font-size: 1rem;
@@ -1060,24 +944,22 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #12f7ff;
+     border: 2px solid #d9ff00;
+    color: #d9ff00;
+    box-shadow: none;
     border-radius: 6px;
-    color: #12f7ff;
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 20px;
-    box-shadow:
-        0 0 8px rgba(18, 247, 255, 0.5);
-    transition: 0.3s ease;
+    
+    
 }
 
 
 .skill-icon:hover {
-    box-shadow:
-        0 0 10px #12f7ff,
-        0 0 20px #12f7ff;
-
-    transform: translateY(-3px);
+    color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: none;
 }
 
 
@@ -1087,11 +969,8 @@ h1{
 
 .skill-box h3 {
     color: #ffffff;
-
     font-size: 1.2rem;
-
     margin: 0 0 10px;
-
     font-weight: 600;
 }
 
@@ -1100,15 +979,11 @@ h1{
 
 .skill-line {
     width: 35px;
-
     height: 3px;
-
-    background: #12f7ff;
-
+    background: #d9ff00;
+    box-shadow: none;
     margin-bottom: 15px;
-
-    box-shadow:
-        0 0 8px #12f7ff;
+    
 }
 
 
@@ -2987,4 +2862,71 @@ a.btn:nth-child(2)::before{
     #menu-icon {
         display: block;
     }
+}
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Hide the navigation by default */
+    .navlist {
+        display: none !important;
+        position: absolute;
+        top: 70px;
+        right: 5%;
+
+        width: 220px;
+        padding: 20px;
+
+        background: #080b0a;
+        border: 1px solid #d9ff00;
+        border-radius: 10px;
+
+        flex-direction: column;
+        gap: 10px;
+
+        z-index: 9999;
+    }
+
+    /* ONLY show it when the menu is clicked */
+    .navlist.active {
+        display: flex !important;
+    }
+
+    /* Show hamburger */
+    #menu-icon {
+        display: block !important;
+    }
+
+    /* Menu items */
+    .navlist li {
+        display: block;
+        width: 100%;
+        list-style: none;
+    }
+
+    .navlist li a {
+        display: block;
+        width: 100%;
+        padding: 12px 15px;
+    }
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 769px) {
+
+    #menu-icon {
+        display: none !important;
+    }
+
+    .navlist {
+        display: flex !important;
+    }
+
 }
