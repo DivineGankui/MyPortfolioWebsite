@@ -1,189 +1,420 @@
-let words = document.querySelectorAll(".word");
-words.forEach((word)=>{
-    let letters = word.textContent.split("");
-    word.textContent="";
-    letters.forEach((letter)=>{
-        let span = document.createElement("span");
-        span.textContent = letter;
-        span.className = "letter";
-        word.append(span);
-    });
-});
+
+/* =========================================================
+   CHANGING ROLE TEXT
+========================================================= */
+
+const words = document.querySelectorAll(".change-text .word");
 
 let currentWordIndex = 0;
-let maxWordIndex = words.length -1;
-words[currentWordIndex].style.opacity = "1";
+
+if (words.length > 0) {
+
+    /* Split each word into individual letters */
+    words.forEach((word) => {
+
+        const letters = word.textContent.trim().split("");
+
+        word.textContent = "";
+
+        letters.forEach((letter) => {
+
+            const span = document.createElement("span");
+
+            span.textContent = letter === " " ? "\u00A0" : letter;
+
+            span.className = "letter";
+
+            word.appendChild(span);
+        });
+    });
 
 
-//typing name effect
+    /* Show first word */
+    words[0].style.opacity = "1";
+
+
+    /* Change role */
+    function changeRoleText() {
+
+        const currentWord = words[currentWordIndex];
+
+        const nextWord =
+            currentWordIndex === words.length - 1
+                ? words[0]
+                : words[currentWordIndex + 1];
+
+
+        /* -------------------------
+           CURRENT WORD OUT
+        ------------------------- */
+
+        Array.from(currentWord.children).forEach((letter, i) => {
+
+            setTimeout(() => {
+
+                letter.className = "letter out";
+
+            }, i * 80);
+
+        });
+
+
+        /* -------------------------
+           NEXT WORD IN
+        ------------------------- */
+
+        nextWord.style.opacity = "1";
+
+        Array.from(nextWord.children).forEach((letter, i) => {
+
+            letter.className = "letter behind";
+
+            setTimeout(() => {
+
+                letter.className = "letter in";
+
+            }, 340 + i * 80);
+
+        });
+
+
+        /* Move to next word */
+
+        currentWordIndex =
+            currentWordIndex === words.length - 1
+                ? 0
+                : currentWordIndex + 1;
+    }
+
+
+    /* Start after the first word has displayed */
+    setTimeout(() => {
+
+        changeRoleText();
+
+        setInterval(changeRoleText, 3000);
+
+    }, 2500);
+}
+
+
+
+/* =========================================================
+   TYPING NAME EFFECT
+========================================================= */
+
 const nameText = "Divine Kojo Gankui";
+
 const typingName = document.getElementById("typing-name");
 
-let index = 0;
+let nameIndex = 0;
+
 let deleting = false;
+
 
 function typeName() {
 
+    if (!typingName) return;
+
+
+    /* -------------------------
+       TYPING FORWARD
+    ------------------------- */
+
     if (!deleting) {
-        // Typing forward
-        typingName.textContent = nameText.substring(0, index + 1);
-        index++;
-        if (index === nameText.length) {
+
+        typingName.textContent =
+            nameText.substring(0, nameIndex + 1);
+
+        nameIndex++;
+
+
+        /* When full name is typed */
+        if (nameIndex === nameText.length) {
+
             setTimeout(() => {
+
                 deleting = true;
+
             }, 1500);
         }
 
-    } else {
-        // Deleting backward
-        typingName.textContent = nameText.substring(0, index - 1);
-        index--;
-        if (index === 0) {
+    }
+
+
+    /* -------------------------
+       DELETING BACKWARD
+    ------------------------- */
+
+    else {
+
+        typingName.textContent =
+            nameText.substring(0, nameIndex - 1);
+
+        nameIndex--;
+
+
+        /* When completely deleted */
+        if (nameIndex === 0) {
+
             deleting = false;
         }
     }
+
+
     const speed = deleting ? 80 : 120;
+
     setTimeout(typeName, speed);
-    
 }
+
+
+/* Start typing effect */
 typeName();
 
 
-// ==================== MENU TOGGLE ====================
-    const menuIcon = document.getElementById("menu-icon");
-    const navList = document.getElementById("navlist");
+
+/* =========================================================
+   MOBILE MENU TOGGLE
+========================================================= */
+
+const menuIcon = document.getElementById("menu-icon");
+
+const navList = document.getElementById("navlist");
+
+
+if (menuIcon && navList) {
 
     menuIcon.addEventListener("click", () => {
+
         navList.classList.toggle("active");
 
+
         if (navList.classList.contains("active")) {
-            menuIcon.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+
+            menuIcon.innerHTML =
+                '<i class="fa-solid fa-xmark"></i>';
+
         } else {
-            menuIcon.innerHTML = '<i class="fa-solid fa-bars"></i>';
+
+            menuIcon.innerHTML =
+                '<i class="fa-solid fa-bars"></i>';
         }
     });
 
-    // Close menu when a navigation link is clicked
-    document.querySelectorAll(".navlist a").forEach(link => {
+
+    /* Close menu after clicking a link */
+
+    document.querySelectorAll(".navlist a").forEach((link) => {
+
         link.addEventListener("click", () => {
+
             navList.classList.remove("active");
-            menuIcon.innerHTML = '<i class="fa-solid fa-bars"></i>';
+
+            menuIcon.innerHTML =
+                '<i class="fa-solid fa-bars"></i>';
         });
+
     });
+}
 
 
 
-let changeText = ()=>{
-    let currentWord = words[currentWordIndex];
-    let nextWord = currentWordIndex === maxWordIndex ? words[0] : words[currentWordIndex + 1];
+/* =========================================================
+   CIRCLE SKILLS
+========================================================= */
 
-    Array.from(currentWord.children).forEach((letter,i)=>{
-        setTimeout(()=>{
-            letter.className = "letter out";
-        },i  * 80);
-    });
-    nextWord.style.opacity = "1";
-    Array.from(nextWord.children).forEach((letter,i)=>{
-        letter.className = "letter behind";
-        setTimeout(()=>{
-            letter.className = "letter in";
-        },340 + i *80);
-    })
-    currentWordIndex = currentWordIndex === maxWordIndex ? 0 : currentWordIndex + 1;
-
-};
-
-changeText();
-setInterval(changeText,3000);
+const circles = document.querySelectorAll(".circle");
 
 
-//circle skill //////////////////////////////////////////////////////
-const circles = document.querySelectorAll('.circle');
-circles.forEach(elem=>{
-    var dots = elem.getAttribute("data-dots");
-    var marked = elem.getAttribute("data-percent");
-    var percent = Math.floor(dots*marked/100);
-    var points = "";
-    var rotate = 360 / dots;
+circles.forEach((elem) => {
 
-    for(let i = 0; i < dots ; i++){
-        points += `<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`
+    const dots = parseInt(
+        elem.getAttribute("data-dots")
+    );
+
+    const marked = parseInt(
+        elem.getAttribute("data-percent")
+    );
+
+
+    const percent = Math.floor(
+        dots * marked / 100
+    );
+
+
+    let points = "";
+
+    const rotate = 360 / dots;
+
+
+    /* Create dots */
+
+    for (let i = 0; i < dots; i++) {
+
+        points += `
+            <div
+                class="points"
+                style="--i:${i}; --rot:${rotate}deg"
+            ></div>
+        `;
     }
+
+
     elem.innerHTML = points;
 
-    const pointsMarked = elem.querySelectorAll('points');
-    for(let i=0; i<percent ; i++){
-        
+
+    /* Mark percentage dots */
+
+    const pointsMarked =
+        elem.querySelectorAll(".points");
+
+
+    for (let i = 0; i < percent; i++) {
+
+        if (pointsMarked[i]) {
+
+            pointsMarked[i].classList.add("marked");
+
+        }
     }
-})
+
+});
 
 
-// ==================== EMAILJS ====================
 
-// Initialize EmailJS
+/* =========================================================
+   EMAILJS
+========================================================= */
+
+
+/* Initialize EmailJS */
+
 (function () {
+
     emailjs.init({
+
         publicKey: "-z2M4WgpboMUqBJKb"
+
     });
+
 })();
 
-// Get the contact form
-const contactForm = document.getElementById("contact-form");
 
-// Check if the form exists
+
+/* Get contact form */
+
+const contactForm =
+    document.getElementById("contact-form");
+
+
 if (contactForm) {
 
-    contactForm.addEventListener("submit", function (event) {
+    contactForm.addEventListener(
+        "submit",
+        function (event) {
 
-        // Prevent the page from refreshing/jumping to Home
-        event.preventDefault();
-        event.stopPropagation();
+            /* Prevent page refresh */
+            event.preventDefault();
 
-        const button = contactForm.querySelector(".send-message-btn");
+            event.stopPropagation();
 
-        // Show sending status
-        button.textContent = "Sending...";
-        button.disabled = true;
 
-        // Send form through EmailJS
-        emailjs.sendForm(
-            "service_xe8s6dd",
-            "template_b8neoeq",
-            contactForm
-        )
+            /* Get button */
 
-        .then(function (response) {
+            const button =
+                contactForm.querySelector(
+                    ".send-message-btn"
+                );
 
-            console.log("SUCCESS:", response.status, response.text);
 
-            // Success message
-            button.textContent = "✓ Message Sent Successfully!";
+            if (!button) return;
 
-            // Clear the form
-            contactForm.reset();
 
-            // Return button to normal
-            setTimeout(function () {
-                button.textContent = "Send Message";
-                button.disabled = false;
-            }, 3000);
+            /* Sending status */
 
-        })
+            button.textContent = "Sending...";
 
-        .catch(function (error) {
+            button.disabled = true;
 
-            console.error("EMAILJS ERROR:", error);
 
-            // Error message
-            button.textContent = "Failed to Send";
+            /* Send form */
 
-            setTimeout(function () {
-                button.textContent = "Send Message";
-                button.disabled = false;
-            }, 3000);
+            emailjs.sendForm(
 
-        });
+                "service_xe8s6dd",
 
-    });
+                "template_b8neoeq",
+
+                contactForm
+
+            )
+
+
+            /* -------------------------
+               SUCCESS
+            ------------------------- */
+
+            .then(function (response) {
+
+                console.log(
+                    "SUCCESS:",
+                    response.status,
+                    response.text
+                );
+
+
+                button.textContent =
+                    "✓ Message Sent Successfully!";
+
+
+                /* Clear form */
+
+                contactForm.reset();
+
+
+                /* Reset button */
+
+                setTimeout(function () {
+
+                    button.textContent =
+                        "Send Message";
+
+                    button.disabled = false;
+
+                }, 3000);
+
+            })
+
+
+            /* -------------------------
+               ERROR
+            ------------------------- */
+
+            .catch(function (error) {
+
+                console.error(
+                    "EMAILJS ERROR:",
+                    error
+                );
+
+
+                button.textContent =
+                    "Failed to Send";
+
+
+                setTimeout(function () {
+
+                    button.textContent =
+                        "Send Message";
+
+                    button.disabled = false;
+
+                }, 3000);
+
+            });
+
+        }
+    );
 
 }
+

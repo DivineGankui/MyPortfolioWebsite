@@ -65,7 +65,6 @@ img {
     position: relative;
     min-height: 100vh;
     overflow: hidden;
-
     background-image:
         linear-gradient(
             rgba(255, 255, 255, 0.035) 1px,
@@ -83,29 +82,19 @@ img {
         url("images/bg.png");
 
     background-size:
-        65px 65px,
-        65px 65px,
-        cover,
-        cover;
+        65px 65px, 65px 65px, cover,cover;
 
     background-position:
-        center,
-        center,
-        center,
-        center;
+        center, center, center, center;
 
     background-repeat:
-        repeat,
-        repeat,
-        no-repeat,
-        no-repeat;
+        repeat, repeat, no-repeat, no-repeat;
 }
 
 
 /* =========================================================
    HEADER
 ========================================================= */
-
 header {
     position: relative;
     z-index: 2000;
@@ -299,6 +288,7 @@ section {
 }
 
 
+```css
 /* =========================================================
    CHANGING ROLE TEXT
 ========================================================= */
@@ -306,56 +296,92 @@ section {
 .change-text {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 
     font-size: 1.35rem;
     font-weight: 600;
-
-    margin-bottom: 20px;
 
     opacity: 0;
     animation: slideBottom 0.5s ease forwards;
     animation-delay: 1s;
 }
 
+/* "And I'm a" */
 .change-text h3 {
     display: inline-flex;
     align-items: center;
+
     margin: 0;
+
     color: var(--text-color);
     font-size: inherit;
 }
 
+/* Changing role container */
 .change-text h3:nth-child(2) {
     position: relative;
-    min-width: 310px;
-    justify-content: flex-start;
+
+    min-width: 360px;
+    height: 40px;
+
     margin-left: 8px;
-}
 
-.change-text h3 .word {
-    position: absolute;
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    perspective: 1000px;
+}
+
+/* Individual words */
+.change-text .word {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+
     opacity: 0;
+
     color: var(--hover-color);
+
     white-space: nowrap;
+
+    transform-style: preserve-3d;
 }
 
-.change-text h3 .word .letter {
+/* Individual letters */
+.change-text .word .letter {
+    display: inline-block;
+
     transform-origin: center center 25px;
+
+    backface-visibility: hidden;
 }
 
-.change-text h3 .word .letter.out {
+/* Letter leaving */
+.change-text .word .letter.out {
     transform: rotateX(90deg);
-    transition: 0.32s cubic-bezier(0.6, 0, 0.7, 0.2);
+
+    transition:
+        transform 0.32s cubic-bezier(0.6, 0, 0.7, 0.2);
 }
 
-.change-text h3 .word .letter.in {
-    transition: 0.38s ease;
+/* Letter entering */
+.change-text .word .letter.in {
+    transform: rotateX(0deg);
+
+    transition:
+        transform 0.38s ease;
 }
 
-.change-text h3 .word .letter.behind {
+/* Letter waiting behind */
+.change-text .word .letter.behind {
     transform: rotateX(-90deg);
 }
+```
+
 
 
 /* =========================================================
@@ -561,31 +587,58 @@ section {
 /* =========================================================
    ABOUT SECTION
 ========================================================= */
-
 .about-section {
     width: 100%;
     min-height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: 100px 8%;
+    margin: 0;
+    min-height: 100vh;
+    color: #fff;
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            rgba(5, 8, 7, 0.86),
+            rgba(5, 8, 7, 0.86)
+        ),
+        url("images/bg.png");
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(217, 255, 0, 0.12) 0%,
+            rgba(217, 255, 0, 0.06) 20%,
+            rgba(217, 255, 0, 0.02) 38%,
+            transparent 60%
+        ),
+        linear-gradient(
+            135deg,
+            #000000 0%,
+            #050706 45%,
+            #000000 100%
+        );
+    background-attachment: fixed;
 
-    background: var(--bg-color);
+
 }
 
 .about-container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-
     display: flex;
     flex-direction: row;
-
     align-items: center;
     justify-content: space-between;
-
     gap: 70px;
 }
 
@@ -593,30 +646,22 @@ section {
 /* =========================================================
    ABOUT IMAGE
 ========================================================= */
-
 .about-image,
 .about .img-about {
     width: 48%;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     text-align: center;
 }
 
 .about-image .image-box,
 .about .img-about {
     width: 100%;
-    max-width: 520px;
-
-    border: 1px solid #ffffff;
+    max-width: 560px;
     border-radius: 10px;
-
     overflow: hidden;
-
     background: transparent;
-
     box-shadow: none;
 }
 
@@ -625,9 +670,7 @@ section {
     width: 100%;
     max-width: 100%;
     height: auto;
-
     display: block;
-
     filter: none;
 }
 
@@ -642,7 +685,6 @@ section {
 /* =========================================================
    ABOUT CONTENT
 ========================================================= */
-
 .about-content {
     width: 52%;
     max-width: 620px;
@@ -651,10 +693,8 @@ section {
 .about-content > span,
 .about-content span {
     color: #ffffff;
-
     font-size: 0.8rem;
     font-weight: 400;
-
     letter-spacing: 2px;
     text-transform: uppercase;
 }
@@ -663,32 +703,22 @@ section {
 /* =========================================================
    ABOUT MAIN HEADING
 ========================================================= */
-
 .about-content h2 {
     color: var(--hover-color);
-
-    font-family: "Cormorant Garamond", serif;
-    font-style: italic;
+    font-style: bold;
     font-weight: 700;
-
     font-size: 2.2rem;
     line-height: 1.25;
-
     margin: 0 0 15px;
-
     text-shadow: none;
 }
 
-.about-content h2 span {
+.about-content span {
     display: block;
-
     color: #ffffff;
-
     margin-top: 5px;
-
     letter-spacing: 0;
     text-transform: none;
-
     font-size: inherit;
 }
 
@@ -696,15 +726,11 @@ section {
 /* =========================================================
    ABOUT SUB HEADING
 ========================================================= */
-
 .about-content h3 {
     color: #ffffff;
-
     font-weight: 600;
     font-size: 1.5rem;
-
     margin-bottom: 0.5rem;
-
     text-shadow: none;
 }
 
@@ -712,16 +738,12 @@ section {
 /* =========================================================
    ABOUT DESCRIPTION
 ========================================================= */
-
 .about-content p,
 .about-content > p {
     color: #ffffff;
-
     font-size: 1rem;
     font-weight: 400;
-
     line-height: 1.7;
-
     margin-bottom: 1.5rem;
 }
 
@@ -729,15 +751,11 @@ section {
 /* =========================================================
    ABOUT TITLE LINE
 ========================================================= */
-
 .title-line {
     width: 80px;
     height: 2px;
-
     background: var(--hover-color);
-
     margin: 15px 0 30px;
-
     box-shadow: none;
 }
 
@@ -750,28 +768,19 @@ section {
 .info-about2,
 .info-about3 {
     position: absolute;
-
     width: 90px;
     height: 90px;
-
     padding: 10px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     background: var(--bg-color);
     color: #ffffff;
-
     border: 1px solid var(--hover-color);
     outline: 2px solid var(--bg-color);
-
     border-radius: 50%;
-
     z-index: 100;
-
     box-shadow: none;
-
     /* Keep movement, but NO GLOW */
     animation: morph 6s linear infinite;
 }
@@ -807,7 +816,6 @@ section {
 
 .about-skills-section {
     width: 100%;
-
     margin-top: 45px;
 }
 
@@ -815,40 +823,28 @@ section {
 /* =========================================================
    EXPERTISE HEADER
 ========================================================= */
-
 .about-skills-header {
     width: 100%;
-
     text-align: center;
-
     margin-bottom: 35px;
 }
 
 .about-skills-header span {
     display: block;
-
     color: var(--hover-color);
-
     font-size: 0.75rem;
     font-weight: 500;
-
     letter-spacing: 2px;
-
     text-transform: uppercase;
-
     margin-bottom: 8px;
 }
 
 .about-skills-header h3 {
     margin: 0;
-
     color: #ffffff;
-
     font-size: 1.8rem;
     font-weight: 600;
-
     text-align: center;
-
     text-shadow: none;
 }
 
@@ -856,18 +852,12 @@ section {
 /* =========================================================
    DEVELOPMENT + DESIGN
 ========================================================= */
-
 .about-skills {
     width: 100%;
-
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 60px;
-
     align-items: start;
-
     justify-content: center;
 }
 
@@ -875,15 +865,11 @@ section {
 /* =========================================================
    EACH DEVELOPMENT / DESIGN SECTION
 ========================================================= */
-
 .about-skill-box {
     width: 100%;
-
     display: flex;
     flex-direction: column;
-
     align-items: flex-start;
-
     text-align: left;
 }
 
@@ -891,15 +877,11 @@ section {
 /* =========================================================
    DEVELOPMENT / DESIGN HEADING
 ========================================================= */
-
 .about-skill-box h3 {
     margin: 0 0 15px;
-
     color: #ffffff;
-
     font-size: 1.2rem;
     font-weight: 600;
-
     text-shadow: none;
 }
 
@@ -907,24 +889,16 @@ section {
 /* =========================================================
    TRANSPARENT ICON BOX
 ========================================================= */
-
 .about-skill-icon {
     width: 70px;
     height: 60px;
-
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     background: transparent;
-
     border: 1px solid #ffffff;
-
     border-radius: 8px;
-
     margin-bottom: 15px;
-
     box-shadow: none;
 }
 
@@ -935,11 +909,8 @@ section {
 
 .about-skill-icon i {
     color: var(--hover-color);
-
     font-size: 1.7rem;
-
     text-shadow: none;
-
     filter: none;
 }
 
@@ -950,16 +921,11 @@ section {
 
 .about-skill-box p {
     max-width: 300px;
-
     margin: 0;
-
     color: #ffffff;
-
     font-size: 0.95rem;
     font-weight: 400;
-
     line-height: 1.6;
-
     text-align: left;
 }
 
@@ -969,7 +935,6 @@ section {
 ========================================================= */
 
 @media (max-width: 768px) {
-
     .about-section {
         min-height: auto;
 
@@ -1169,9 +1134,20 @@ section {
 /* =========================================================
    SERVICES
 ========================================================= */
-#services,
 .services {
-    background: var(--bg-color);
+  min-height: 100vh;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(3, 5, 4, 0.88),
+            rgba(8, 11, 10, 0.78),
+            rgba(17, 22, 17, 0.88)
+        ),
+        url("images/bg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .main-text {
@@ -1301,9 +1277,17 @@ section {
 /* =========================================================
    SKILLS
 ========================================================= */
-
 .skills {
-    background: var(--secondary-bg-color);
+        margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #030504 0%,
+        #080b0a 45%,
+        #121a13 100%
+    );
+    background-attachment: fixed;
+    color: #fff;
 }
 
 .skill-main {
@@ -1403,7 +1387,6 @@ section {
 /* =========================================================
    PROFESSIONAL SKILLS
 ========================================================= */
-
 .professional {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1427,35 +1410,27 @@ section {
     letter-spacing: 1px;
     font-size: 1.1rem;
     font-weight: 600;
-
     position: absolute;
     top: 40%;
     left: 50%;
-
     transform: translate(-50%, -50%);
 }
 
 .circle {
     width: 100%;
     height: 120px;
-
     display: flex;
     justify-content: center;
     align-items: center;
 
-    border: 2px solid #ffffff;
-    border-radius: 50%;
 }
 
 .circle .points {
     width: 2px;
     height: 10px;
-
     background: var(--bg-color);
-
     position: absolute;
     border-radius: 3px;
-
     transform:
         rotate(calc(var(--i) * var(--rot)))
         translateY(-45px);
