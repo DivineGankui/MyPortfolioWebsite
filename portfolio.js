@@ -1,420 +1,700 @@
-
 /* =========================================================
-   CHANGING ROLE TEXT
+   DOM READY
 ========================================================= */
 
-const words = document.querySelectorAll(".change-text .word");
+document.addEventListener("DOMContentLoaded", function () {
 
-let currentWordIndex = 0;
+    /* =====================================================
+       CHANGING ROLE TEXT
+    ===================================================== */
 
-if (words.length > 0) {
+    const words = document.querySelectorAll(".change-text .word");
 
-    /* Split each word into individual letters */
-    words.forEach((word) => {
+    let currentWordIndex = 0;
 
-        const letters = word.textContent.trim().split("");
+    if (words.length > 0) {
 
-        word.textContent = "";
+        /* -----------------------------------------------
+           Split every word into individual letters
+        ------------------------------------------------ */
 
-        letters.forEach((letter) => {
+        words.forEach((word) => {
 
-            const span = document.createElement("span");
+            const text = word.textContent.trim();
 
-            span.textContent = letter === " " ? "\u00A0" : letter;
+            word.textContent = "";
 
-            span.className = "letter";
+            [...text].forEach((letter) => {
 
-            word.appendChild(span);
-        });
-    });
+                const span = document.createElement("span");
 
+                span.classList.add("letter");
 
-    /* Show first word */
-    words[0].style.opacity = "1";
+                span.textContent =
+                    letter === " "
+                        ? "\u00A0"
+                        : letter;
 
-
-    /* Change role */
-    function changeRoleText() {
-
-        const currentWord = words[currentWordIndex];
-
-        const nextWord =
-            currentWordIndex === words.length - 1
-                ? words[0]
-                : words[currentWordIndex + 1];
-
-
-        /* -------------------------
-           CURRENT WORD OUT
-        ------------------------- */
-
-        Array.from(currentWord.children).forEach((letter, i) => {
-
-            setTimeout(() => {
-
-                letter.className = "letter out";
-
-            }, i * 80);
-
+                word.appendChild(span);
+            });
         });
 
 
-        /* -------------------------
-           NEXT WORD IN
-        ------------------------- */
+        /* -----------------------------------------------
+           Prepare all words
+        ------------------------------------------------ */
 
-        nextWord.style.opacity = "1";
+        words.forEach((word, index) => {
 
-        Array.from(nextWord.children).forEach((letter, i) => {
+            word.style.opacity =
+                index === 0 ? "1" : "0";
 
-            letter.className = "letter behind";
+            word.style.visibility =
+                index === 0 ? "visible" : "hidden";
 
-            setTimeout(() => {
+            word.querySelectorAll(".letter").forEach((letter) => {
 
-                letter.className = "letter in";
+                letter.className = "letter";
 
-            }, 340 + i * 80);
+                if (index !== 0) {
+                    letter.classList.add("behind");
+                }
 
+            });
         });
 
 
-        /* Move to next word */
+        /* -----------------------------------------------
+           Change role
+        ------------------------------------------------ */
 
-        currentWordIndex =
-            currentWordIndex === words.length - 1
-                ? 0
-                : currentWordIndex + 1;
-    }
+        function changeRoleText() {
 
+            const currentWord =
+                words[currentWordIndex];
 
-    /* Start after the first word has displayed */
-    setTimeout(() => {
+            const nextWord =
+                words[
+                    (currentWordIndex + 1) % words.length
+                ];
 
-        changeRoleText();
 
-        setInterval(changeRoleText, 3000);
+            /* CURRENT WORD OUT */
 
-    }, 2500);
-}
+            const currentLetters =
+                currentWord.querySelectorAll(".letter");
 
+            currentLetters.forEach((letter, index) => {
 
+                setTimeout(() => {
 
-/* =========================================================
-   TYPING NAME EFFECT
-========================================================= */
+                    letter.className = "letter out";
 
-const nameText = "Divine Kojo Gankui";
-
-const typingName = document.getElementById("typing-name");
-
-let nameIndex = 0;
-
-let deleting = false;
-
-
-function typeName() {
-
-    if (!typingName) return;
-
-
-    /* -------------------------
-       TYPING FORWARD
-    ------------------------- */
-
-    if (!deleting) {
-
-        typingName.textContent =
-            nameText.substring(0, nameIndex + 1);
-
-        nameIndex++;
-
-
-        /* When full name is typed */
-        if (nameIndex === nameText.length) {
-
-            setTimeout(() => {
-
-                deleting = true;
-
-            }, 1500);
-        }
-
-    }
-
-
-    /* -------------------------
-       DELETING BACKWARD
-    ------------------------- */
-
-    else {
-
-        typingName.textContent =
-            nameText.substring(0, nameIndex - 1);
-
-        nameIndex--;
-
-
-        /* When completely deleted */
-        if (nameIndex === 0) {
-
-            deleting = false;
-        }
-    }
-
-
-    const speed = deleting ? 80 : 120;
-
-    setTimeout(typeName, speed);
-}
-
-
-/* Start typing effect */
-typeName();
-
-
-
-/* =========================================================
-   MOBILE MENU TOGGLE
-========================================================= */
-
-const menuIcon = document.getElementById("menu-icon");
-
-const navList = document.getElementById("navlist");
-
-
-if (menuIcon && navList) {
-
-    menuIcon.addEventListener("click", () => {
-
-        navList.classList.toggle("active");
-
-
-        if (navList.classList.contains("active")) {
-
-            menuIcon.innerHTML =
-                '<i class="fa-solid fa-xmark"></i>';
-
-        } else {
-
-            menuIcon.innerHTML =
-                '<i class="fa-solid fa-bars"></i>';
-        }
-    });
-
-
-    /* Close menu after clicking a link */
-
-    document.querySelectorAll(".navlist a").forEach((link) => {
-
-        link.addEventListener("click", () => {
-
-            navList.classList.remove("active");
-
-            menuIcon.innerHTML =
-                '<i class="fa-solid fa-bars"></i>';
-        });
-
-    });
-}
-
-
-
-/* =========================================================
-   CIRCLE SKILLS
-========================================================= */
-
-const circles = document.querySelectorAll(".circle");
-
-
-circles.forEach((elem) => {
-
-    const dots = parseInt(
-        elem.getAttribute("data-dots")
-    );
-
-    const marked = parseInt(
-        elem.getAttribute("data-percent")
-    );
-
-
-    const percent = Math.floor(
-        dots * marked / 100
-    );
-
-
-    let points = "";
-
-    const rotate = 360 / dots;
-
-
-    /* Create dots */
-
-    for (let i = 0; i < dots; i++) {
-
-        points += `
-            <div
-                class="points"
-                style="--i:${i}; --rot:${rotate}deg"
-            ></div>
-        `;
-    }
-
-
-    elem.innerHTML = points;
-
-
-    /* Mark percentage dots */
-
-    const pointsMarked =
-        elem.querySelectorAll(".points");
-
-
-    for (let i = 0; i < percent; i++) {
-
-        if (pointsMarked[i]) {
-
-            pointsMarked[i].classList.add("marked");
-
-        }
-    }
-
-});
-
-
-
-/* =========================================================
-   EMAILJS
-========================================================= */
-
-
-/* Initialize EmailJS */
-
-(function () {
-
-    emailjs.init({
-
-        publicKey: "-z2M4WgpboMUqBJKb"
-
-    });
-
-})();
-
-
-
-/* Get contact form */
-
-const contactForm =
-    document.getElementById("contact-form");
-
-
-if (contactForm) {
-
-    contactForm.addEventListener(
-        "submit",
-        function (event) {
-
-            /* Prevent page refresh */
-            event.preventDefault();
-
-            event.stopPropagation();
-
-
-            /* Get button */
-
-            const button =
-                contactForm.querySelector(
-                    ".send-message-btn"
-                );
-
-
-            if (!button) return;
-
-
-            /* Sending status */
-
-            button.textContent = "Sending...";
-
-            button.disabled = true;
-
-
-            /* Send form */
-
-            emailjs.sendForm(
-
-                "service_xe8s6dd",
-
-                "template_b8neoeq",
-
-                contactForm
-
-            )
-
-
-            /* -------------------------
-               SUCCESS
-            ------------------------- */
-
-            .then(function (response) {
-
-                console.log(
-                    "SUCCESS:",
-                    response.status,
-                    response.text
-                );
-
-
-                button.textContent =
-                    "✓ Message Sent Successfully!";
-
-
-                /* Clear form */
-
-                contactForm.reset();
-
-
-                /* Reset button */
-
-                setTimeout(function () {
-
-                    button.textContent =
-                        "Send Message";
-
-                    button.disabled = false;
-
-                }, 3000);
-
-            })
-
-
-            /* -------------------------
-               ERROR
-            ------------------------- */
-
-            .catch(function (error) {
-
-                console.error(
-                    "EMAILJS ERROR:",
-                    error
-                );
-
-
-                button.textContent =
-                    "Failed to Send";
-
-
-                setTimeout(function () {
-
-                    button.textContent =
-                        "Send Message";
-
-                    button.disabled = false;
-
-                }, 3000);
+                }, index * 60);
 
             });
 
+
+            /* NEXT WORD */
+
+            nextWord.style.opacity = "1";
+            nextWord.style.visibility = "visible";
+
+
+            const nextLetters =
+                nextWord.querySelectorAll(".letter");
+
+
+            nextLetters.forEach((letter, index) => {
+
+                letter.className = "letter behind";
+
+                setTimeout(() => {
+
+                    letter.className = "letter in";
+
+                }, 350 + index * 60);
+
+            });
+
+
+            /* Hide old word after animation */
+
+            setTimeout(() => {
+
+                currentWord.style.opacity = "0";
+                currentWord.style.visibility = "hidden";
+
+                currentLetters.forEach((letter) => {
+
+                    letter.className = "letter behind";
+
+                });
+
+            }, 800);
+
+
+            /* Move to next word */
+
+            currentWordIndex =
+                (currentWordIndex + 1) % words.length;
         }
-    );
 
-}
 
+        /* Start changing roles */
+
+        setTimeout(() => {
+
+            changeRoleText();
+
+            setInterval(changeRoleText, 4000);
+
+        }, 2500);
+
+    }
+
+
+
+    /* =====================================================
+       TYPING NAME EFFECT
+    ===================================================== */
+
+    const typingName =
+        document.getElementById("typing-name");
+
+    const nameText =
+        "Divine Kojo Gankui";
+
+    let nameIndex = 0;
+    let deleting = false;
+    let pauseAfterTyping = false;
+
+
+    function typeName() {
+
+        if (!typingName) {
+            return;
+        }
+
+
+        /* -----------------------------------------------
+           TYPING
+        ------------------------------------------------ */
+
+        if (!deleting) {
+
+            typingName.textContent =
+                nameText.substring(0, nameIndex + 1);
+
+            nameIndex++;
+
+
+            /* Full name reached */
+
+            if (nameIndex >= nameText.length) {
+
+                nameIndex = nameText.length;
+
+                if (!pauseAfterTyping) {
+
+                    pauseAfterTyping = true;
+
+                    setTimeout(() => {
+
+                        deleting = true;
+                        pauseAfterTyping = false;
+
+                        typeName();
+
+                    }, 1500);
+
+                }
+
+                return;
+            }
+
+
+            setTimeout(typeName, 120);
+
+        }
+
+
+        /* -----------------------------------------------
+           DELETING
+        ------------------------------------------------ */
+
+        else {
+
+            typingName.textContent =
+                nameText.substring(0, nameIndex - 1);
+
+            nameIndex--;
+
+
+            /* Name completely deleted */
+
+            if (nameIndex <= 0) {
+
+                nameIndex = 0;
+
+                deleting = false;
+
+                setTimeout(typeName, 400);
+
+                return;
+            }
+
+
+            setTimeout(typeName, 80);
+        }
+    }
+
+
+    /* Start name animation */
+
+    if (typingName) {
+        typeName();
+    }
+
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    /*
+       IMPORTANT:
+       We use BOTH ID and CLASS selectors so the menu
+       works even if your HTML has:
+
+       id="menu-icon"
+
+       or
+
+       class="menu-icon"
+    */
+
+    const menuIcon =
+        document.getElementById("menu-icon") ||
+        document.querySelector(".menu-icon");
+
+
+    /*
+       We search for the navigation by CLASS first.
+
+       Your HTML should have:
+
+       <ul class="navlist">
+    */
+
+    const navList =
+        document.querySelector(".navlist") ||
+        document.getElementById("navlist");
+
+
+    /* -----------------------------------------------
+       Check that both elements exist
+    ------------------------------------------------ */
+
+    if (menuIcon && navList) {
+
+        console.log("Mobile menu connected successfully.");
+
+
+        /* -------------------------------------------
+           Open / Close menu
+        ------------------------------------------- */
+
+        menuIcon.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+
+            navList.classList.toggle("active");
+
+
+            const isOpen =
+                navList.classList.contains("active");
+
+
+            /* Change icon */
+
+            if (isOpen) {
+
+                menuIcon.innerHTML =
+                    '<i class="fa-solid fa-xmark"></i>';
+
+                menuIcon.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+                menuIcon.setAttribute(
+                    "aria-label",
+                    "Close menu"
+                );
+
+            } else {
+
+                menuIcon.innerHTML =
+                    '<i class="fa-solid fa-bars"></i>';
+
+                menuIcon.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuIcon.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
+            }
+
+        });
+
+
+        /* -------------------------------------------
+           Close menu when navigation link is clicked
+        ------------------------------------------- */
+
+        const navLinks =
+            navList.querySelectorAll("a");
+
+
+        navLinks.forEach((link) => {
+
+            link.addEventListener("click", function () {
+
+                navList.classList.remove("active");
+
+
+                menuIcon.innerHTML =
+                    '<i class="fa-solid fa-bars"></i>';
+
+
+                menuIcon.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuIcon.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
+
+            });
+
+        });
+
+
+        /* -------------------------------------------
+           Close menu when clicking outside
+        ------------------------------------------- */
+
+        document.addEventListener("click", function (event) {
+
+            const clickedInsideMenu =
+                navList.contains(event.target);
+
+            const clickedIcon =
+                menuIcon.contains(event.target);
+
+
+            if (
+                !clickedInsideMenu &&
+                !clickedIcon
+            ) {
+
+                navList.classList.remove("active");
+
+
+                menuIcon.innerHTML =
+                    '<i class="fa-solid fa-bars"></i>';
+
+
+                menuIcon.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        });
+
+
+        /* -------------------------------------------
+           Close menu when screen becomes desktop size
+        ------------------------------------------- */
+
+        window.addEventListener("resize", function () {
+
+            if (window.innerWidth > 768) {
+
+                navList.classList.remove("active");
+
+
+                menuIcon.innerHTML =
+                    '<i class="fa-solid fa-bars"></i>';
+
+
+                menuIcon.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        });
+
+    } else {
+
+        console.error(
+            "Mobile menu error: .menu-icon or .navlist was not found."
+        );
+
+    }
+
+
+
+    /* =====================================================
+       CIRCLE SKILLS
+    ===================================================== */
+
+    const circles =
+        document.querySelectorAll(".circle");
+
+
+    circles.forEach((circle) => {
+
+        const dots =
+            parseInt(
+                circle.getAttribute("data-dots")
+            ) || 0;
+
+
+        const percentage =
+            parseInt(
+                circle.getAttribute("data-percent")
+            ) || 0;
+
+
+        if (dots <= 0) {
+            return;
+        }
+
+
+        const marked =
+            Math.floor(
+                dots * percentage / 100
+            );
+
+
+        const rotation =
+            360 / dots;
+
+
+        let pointsHTML = "";
+
+
+        /* Create dots */
+
+        for (let i = 0; i < dots; i++) {
+
+            pointsHTML += `
+                <div
+                    class="points"
+                    style="--i:${i}; --rot:${rotation}deg;"
+                ></div>
+            `;
+        }
+
+
+        circle.innerHTML =
+            pointsHTML;
+
+
+        /* Mark percentage */
+
+        const points =
+            circle.querySelectorAll(".points");
+
+
+        for (let i = 0; i < marked; i++) {
+
+            if (points[i]) {
+
+                points[i].classList.add("marked");
+
+            }
+
+        }
+
+    });
+
+
+
+    /* =====================================================
+       EMAILJS
+    ===================================================== */
+
+    if (
+        typeof emailjs !== "undefined"
+    ) {
+
+        emailjs.init({
+            publicKey: "-z2M4WgpboMUqBJKb"
+        });
+
+
+        const contactForm =
+            document.getElementById("contact-form");
+
+
+        if (contactForm) {
+
+            contactForm.addEventListener(
+                "submit",
+                function (event) {
+
+                    /* ---------------------------------
+                       STOP PAGE REFRESH
+                    --------------------------------- */
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+
+                    /* ---------------------------------
+                       BUTTON
+                    --------------------------------- */
+
+                    const button =
+                        contactForm.querySelector(
+                            ".send-message-btn"
+                        );
+
+
+                    if (!button) {
+
+                        console.error(
+                            "Send button not found."
+                        );
+
+                        return;
+                    }
+
+
+                    /* ---------------------------------
+                       Prevent multiple submissions
+                    --------------------------------- */
+
+                    if (button.disabled) {
+                        return;
+                    }
+
+
+                    /* ---------------------------------
+                       Sending state
+                    --------------------------------- */
+
+                    button.disabled = true;
+
+                    button.textContent =
+                        "Sending...";
+
+
+                    /* ---------------------------------
+                       SEND EMAIL
+                    --------------------------------- */
+
+                    emailjs.sendForm(
+                        "service_xe8s6dd",
+                        "template_b8neoeq",
+                        contactForm
+                    )
+
+
+                    /* ---------------------------------
+                       SUCCESS
+                    --------------------------------- */
+
+                    .then(function (response) {
+
+                        console.log(
+                            "Email sent successfully:",
+                            response.status,
+                            response.text
+                        );
+
+
+                        button.textContent =
+                            "✓ Message Sent Successfully!";
+
+
+                        /* Clear form */
+
+                        contactForm.reset();
+
+
+                        /* Restore button */
+
+                        setTimeout(function () {
+
+                            button.textContent =
+                                "Send Message";
+
+                            button.disabled = false;
+
+                        }, 3000);
+
+                    })
+
+
+                    /* ---------------------------------
+                       ERROR
+                    --------------------------------- */
+
+                    .catch(function (error) {
+
+                        console.error(
+                            "EmailJS Error:",
+                            error
+                        );
+
+
+                        button.textContent =
+                            "Failed to Send";
+
+
+                        setTimeout(function () {
+
+                            button.textContent =
+                                "Send Message";
+
+                            button.disabled = false;
+
+                        }, 3000);
+
+                    });
+
+                }
+            );
+
+        } else {
+
+            console.warn(
+                "Contact form #contact-form was not found."
+            );
+
+        }
+
+    } else {
+
+        console.error(
+            "EmailJS library was not loaded."
+        );
+
+    }
+
+});
