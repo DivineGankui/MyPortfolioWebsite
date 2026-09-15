@@ -2453,17 +2453,6 @@ header {
         font-size: 0.72rem;
     }
 
-    .btn,
-    .btn-box a{
-        flex: 1;
-        min-width: 0;
-        height: 42px;
-        min-height: 22px;
-        padding: 9px 8px;
-        font-size: 0.72rem;
-
-    }
-
     /* -----------------------------------------------------
        PROFILE IMAGE
     ----------------------------------------------------- */
