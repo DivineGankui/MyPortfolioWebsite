@@ -2441,7 +2441,7 @@ header {
        BUTTONS
     ----------------------------------------------------- */
     .btn-box {
-        width: 100%;
+        width: 50%;
         gap: 10px;
         flex-wrap: nowrap;
     }
