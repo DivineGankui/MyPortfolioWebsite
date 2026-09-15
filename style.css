@@ -1653,15 +1653,10 @@ header {
     background: transparent;
 
     color: var(--hover-color);
-
     border: 1px solid var(--hover-color);
-
     border-radius: 8px;
-
     font-size: 22px;
-
     text-decoration: none;
-
     transition:
         background-color 0.3s ease,
         color 0.3s ease,
@@ -1670,9 +1665,7 @@ header {
 
 .contact-social-icons a:hover {
     background: var(--hover-color);
-
     color: var(--bg-color);
-
     transform: translateY(-3px);
 }
 
@@ -1698,40 +1691,27 @@ header {
 
 .form-group {
     width: 100%;
-
     margin-bottom: 28px;
 }
 
 .form-group label {
     display: block;
-
     font-size: 16px;
-
     font-weight: 500;
-
     color: var(--text-color);
-
     margin-bottom: 10px;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-
     border: 1px solid #343a36;
-
     border-radius: 9px;
-
     background: #0d1110;
-
     color: var(--text-color);
-
     font-family: inherit;
-
     font-size: 16px;
-
     outline: none;
-
     transition:
         border-color 0.3s ease,
         background-color 0.3s ease;
@@ -1739,15 +1719,12 @@ header {
 
 .form-group input {
     height: 58px;
-
     padding: 0 20px;
 }
 
 .form-group textarea {
     min-height: 180px;
-
     padding: 18px 20px;
-
     resize: vertical;
 }
 
@@ -1759,9 +1736,7 @@ header {
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--hover-color);
-
     background: #0b0f0d;
-
     box-shadow: none;
 }
 

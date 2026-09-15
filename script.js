@@ -261,20 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /* =====================================================
        MOBILE MENU
     ===================================================== */
-
-    /*
-       IMPORTANT:
-       We use BOTH ID and CLASS selectors so the menu
-       works even if your HTML has:
-
-       id="menu-icon"
-
-       or
-
-       class="menu-icon"
-    */
-
-    const menuIcon =
+       const menuIcon =
         document.getElementById("menu-icon") ||
         document.querySelector(".menu-icon");
 
@@ -456,85 +443,69 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+/* =====================================================
+   CIRCLE SKILLS
+===================================================== */
 
-    /* =====================================================
-       CIRCLE SKILLS
-    ===================================================== */
+const circles = document.querySelectorAll(".circle");
 
-    const circles =
-        document.querySelectorAll(".circle");
+circles.forEach((circle) => {
 
+    const dots =
+        parseInt(circle.getAttribute("data-dots")) || 0;
 
-    circles.forEach((circle) => {
+    const percentage =
+        parseInt(circle.getAttribute("data-percent")) || 0;
 
-        const dots =
-            parseInt(
-                circle.getAttribute("data-dots")
-            ) || 0;
+    if (dots <= 0) {
+        return;
+    }
 
+    const marked =
+        Math.floor(dots * percentage / 100);
 
-        const percentage =
-            parseInt(
-                circle.getAttribute("data-percent")
-            ) || 0;
+    const rotation =
+        360 / dots;
 
+    let pointsHTML = "";
 
-        if (dots <= 0) {
-            return;
-        }
+    /* Create dots */
 
+    for (let i = 0; i < dots; i++) {
 
-        const marked =
-            Math.floor(
-                dots * percentage / 100
-            );
+        pointsHTML += `
+            <div
+                class="points"
+                style="--i:${i}; --rot:${rotation}deg;"
+            ></div>
+        `;
+    }
 
+    circle.innerHTML = pointsHTML;
 
-        const rotation =
-            360 / dots;
-
-
-        let pointsHTML = "";
-
-
-        /* Create dots */
-
-        for (let i = 0; i < dots; i++) {
-
-            pointsHTML += `
-                <div
-                    class="points"
-                    style="--i:${i}; --rot:${rotation}deg;"
-                ></div>
-            `;
-        }
+    const points =
+        circle.querySelectorAll(".points");
 
 
-        circle.innerHTML =
-            pointsHTML;
+    /* =================================================
+       ANIMATE DOTS ACCORDING TO PERCENTAGE
+    ================================================= */
 
+    points.forEach((point, index) => {
 
-        /* Mark percentage */
+        if (index < marked) {
 
-        const points =
-            circle.querySelectorAll(".points");
+            setTimeout(() => {
 
+                point.classList.add("marked");
 
-        for (let i = 0; i < marked; i++) {
-
-            if (points[i]) {
-
-                points[i].classList.add("marked");
-
-            }
+            }, index * 30);
 
         }
 
     });
 
-
-
-    /* =====================================================
+});    /* =====================================================
        EMAILJS
     ===================================================== */
 
