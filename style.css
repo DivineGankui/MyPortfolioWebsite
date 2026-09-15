@@ -1773,23 +1773,14 @@ header {
 .send-message-btn {
     width: 100%;
     height: 58px;
-
     border: 2px solid var(--hover-color);
-
     border-radius: 8px;
-
     background: transparent;
-
     color: var(--hover-color);
-
     font-family: inherit;
-
     font-size: 17px;
-
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         background-color 0.3s ease,
         color 0.3s ease,
@@ -2013,7 +2004,6 @@ header {
        BUTTONS
        IMAGE
     */
-
     .home-content {
         width: 100%;
         max-width: 650px;
@@ -2470,7 +2460,6 @@ header {
     /* =====================================================
        ABOUT
     ===================================================== */
-
     .about-section {
         padding: 60px 5%;
     }
@@ -2497,7 +2486,6 @@ header {
     /* =====================================================
        ABOUT SKILLS
     ===================================================== */
-
     .about-skills-section {
         margin-top: 35px;
     }
@@ -2516,7 +2504,6 @@ header {
 
     .about-skills {
         grid-template-columns: 1fr 1fr;
-
         gap: 20px;
     }
 
@@ -2527,7 +2514,6 @@ header {
     .about-skill-icon {
         width: 55px;
         height: 50px;
-
         margin-bottom: 12px;
     }
 
@@ -2537,9 +2523,7 @@ header {
 
     .about-skill-box p {
         font-size: 0.76rem;
-
         line-height: 1.5;
-
         text-align: center;
     }
 
@@ -2603,7 +2587,6 @@ header {
     /* =====================================================
        CONTACT
     ===================================================== */
-
     .contact-section {
         padding: 65px 5%;
     }
