@@ -2428,11 +2428,8 @@ header {
 
     .home-content p {
         max-width: 95%;
-
         font-size: 0.82rem;
-
         line-height: 1.7;
-
         margin-bottom: 25px;
     }
 
@@ -2456,6 +2453,16 @@ header {
         font-size: 0.72rem;
     }
 
+    .btn,
+    .btn-box a{
+        flex: 1;
+        min-width: 0;
+        height: 42px;
+        min-height: 22px;
+        padding: 9px 8px;
+        font-size: 0.72rem;
+
+    }
 
     /* -----------------------------------------------------
        PROFILE IMAGE
