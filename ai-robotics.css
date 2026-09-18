@@ -1,0 +1,942 @@
+/* =====================================================
+   AI & ROBOTICS PROJECTS PAGE
+===================================================== */
+
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: "Poppins", sans-serif;
+
+    background: #080b0a;
+
+    color: #f5f5f5;
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root {
+
+    --bg-color: #080b0a;
+
+    --secondary-bg: #151a14;
+
+    --card-bg: #10140f;
+
+    --lemon: #d9ff00;
+
+    --text-color: #f5f5f5;
+
+    --muted-text: #a9aaa5;
+
+    --border-color: rgba(255, 255, 255, 0.1);
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.project-header {
+
+    width: 100%;
+
+    padding: 25px 8%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border-color);
+
+    background: rgba(8, 11, 10, 0.95);
+
+    position: relative;
+
+    z-index: 100;
+
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--text-color);
+
+    text-decoration: none;
+
+    font-size: 1.2rem;
+
+    font-weight: 600;
+
+}
+
+
+.logo span {
+
+    width: 42px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 2px solid var(--lemon);
+
+    border-radius: 10px;
+
+    color: var(--lemon);
+
+    font-weight: 700;
+
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.back-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 18px;
+
+    border: 1px solid var(--lemon);
+
+    border-radius: 6px;
+
+    color: var(--lemon);
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+    transition: 0.3s ease;
+
+}
+
+
+.back-btn:hover {
+
+    background: var(--lemon);
+
+    color: #080b0a;
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.projects-hero {
+
+    min-height: 55vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 8%;
+
+    background:
+        linear-gradient(
+            rgba(8, 11, 10, 0.95),
+            rgba(8, 11, 10, 0.9)
+        );
+
+    position: relative;
+
+}
+
+
+/* =====================================================
+   SUBTLE GRID
+===================================================== */
+
+.projects-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 65px 65px;
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
+
+.hero-content {
+
+    max-width: 800px;
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+
+.section-tag {
+
+    color: var(--lemon);
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+}
+
+
+.hero-content h1 {
+
+    margin-top: 15px;
+
+    font-size: clamp(2.5rem, 6vw, 5rem);
+
+    line-height: 1.1;
+
+}
+
+
+.hero-line {
+
+    width: 80px;
+
+    height: 3px;
+
+    background: var(--lemon);
+
+    margin: 25px auto;
+
+}
+
+
+.hero-content p {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    color: var(--muted-text);
+
+    line-height: 1.8;
+
+}
+
+
+/* =====================================================
+   PROJECT SECTIONS
+===================================================== */
+
+.projects-section {
+
+    padding: 90px 8%;
+
+}
+
+
+.upcoming-section {
+
+    background: var(--secondary-bg);
+
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading {
+
+    text-align: center;
+
+    max-width: 700px;
+
+    margin: 0 auto 55px;
+
+}
+
+
+.section-heading span {
+
+    color: var(--lemon);
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+}
+
+
+.section-heading h2 {
+
+    font-size: 2.5rem;
+
+    margin-top: 10px;
+
+}
+
+
+.heading-line {
+
+    width: 60px;
+
+    height: 3px;
+
+    background: var(--lemon);
+
+    margin: 18px auto;
+
+}
+
+
+.section-heading p {
+
+    color: var(--muted-text);
+
+    line-height: 1.7;
+
+}
+
+
+/* =====================================================
+   PROJECT GRID
+===================================================== */
+
+.projects-grid {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 30px;
+
+}
+
+
+/* =====================================================
+   PROJECT CARD
+===================================================== */
+
+.project-card {
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease;
+
+    position: relative;
+
+}
+
+
+.project-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: var(--lemon);
+
+}
+
+
+/* =====================================================
+   PROJECT IMAGE
+===================================================== */
+
+.project-image {
+
+    width: 100%;
+
+    height: 280px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #0d100c;
+
+}
+
+
+.project-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.5s ease;
+
+}
+
+
+.project-card:hover .project-image img {
+
+    transform: scale(1.05);
+
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.project-status {
+
+    position: absolute;
+
+    top: 15px;
+
+    right: 15px;
+
+    padding: 6px 12px;
+
+    border-radius: 30px;
+
+    font-size: 0.75rem;
+
+    font-weight: 600;
+
+    background: rgba(8, 11, 10, 0.9);
+
+}
+
+
+.project-status.completed {
+
+    color: var(--lemon);
+
+    border: 1px solid var(--lemon);
+
+}
+
+
+.project-status.upcoming {
+
+    color: #fff;
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+}
+
+
+/* =====================================================
+   PROJECT CONTENT
+===================================================== */
+
+.project-content {
+
+    padding: 28px;
+
+}
+
+
+.project-category {
+
+    color: var(--lemon);
+
+    font-size: 0.75rem;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+}
+
+
+.project-content h3 {
+
+    font-size: 1.5rem;
+
+    margin: 8px 0 12px;
+
+}
+
+
+.project-content p {
+
+    color: var(--muted-text);
+
+    font-size: 0.9rem;
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =====================================================
+   TECHNOLOGIES
+===================================================== */
+
+.technologies {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.technologies span {
+
+    padding: 6px 10px;
+
+    background: rgba(217, 255, 0, 0.06);
+
+    border: 1px solid rgba(217, 255, 0, 0.2);
+
+    border-radius: 4px;
+
+    color: #dce0d6;
+
+    font-size: 0.72rem;
+
+}
+
+
+/* =====================================================
+   PROJECT BUTTONS
+===================================================== */
+
+.project-buttons {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.project-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    border: 1px solid var(--lemon);
+
+    border-radius: 5px;
+
+    color: var(--lemon);
+
+    text-decoration: none;
+
+    font-size: 0.8rem;
+
+    transition: 0.3s ease;
+
+}
+
+
+.project-btn:hover {
+
+    background: var(--lemon);
+
+    color: #080b0a;
+
+}
+
+
+.github-btn {
+
+    border-color: rgba(255,255,255,0.25);
+
+    color: #fff;
+
+}
+
+
+.github-btn:hover {
+
+    background: #fff;
+
+    color: #080b0a;
+
+}
+
+
+/* =====================================================
+   UPCOMING PROJECT
+===================================================== */
+
+.upcoming-card {
+
+    opacity: 0.9;
+
+}
+
+
+.upcoming-image {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.coming-soon {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    color: #777b73;
+
+}
+
+
+.coming-soon i {
+
+    font-size: 3rem;
+
+}
+
+
+.coming-soon span {
+
+    font-size: 0.9rem;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =====================================================
+   IMAGE ERROR
+===================================================== */
+
+.project-image.image-error {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.project-image.image-error::after {
+
+    content: "Project Image";
+
+    color: #777b73;
+
+    font-size: 0.85rem;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =====================================================
+   POP-IN SCROLL ANIMATION
+===================================================== */
+
+.pop-in {
+
+    opacity: 0;
+
+    transform: scale(0.75);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+}
+
+
+.pop-in.show {
+
+    opacity: 1;
+
+    transform: scale(1);
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.project-footer {
+
+    padding: 30px 8%;
+
+    border-top: 1px solid var(--border-color);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+
+.project-footer p {
+
+    color: var(--muted-text);
+
+    font-size: 0.8rem;
+
+}
+
+
+.project-footer a {
+
+    color: var(--lemon);
+
+    text-decoration: none;
+
+    font-size: 0.85rem;
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .projects-grid {
+
+        grid-template-columns: 1fr;
+
+        max-width: 650px;
+
+    }
+
+
+    .projects-hero {
+
+        min-height: 45vh;
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .project-header {
+
+        padding: 18px 5%;
+
+    }
+
+
+    .logo {
+
+        font-size: 1rem;
+
+    }
+
+
+    .logo span {
+
+        width: 38px;
+
+        height: 30px;
+
+    }
+
+
+    .back-btn {
+
+        padding: 8px 12px;
+
+        font-size: 0.75rem;
+
+    }
+
+
+    .projects-hero {
+
+        padding: 70px 5%;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 2.4rem;
+
+    }
+
+
+    .hero-content p {
+
+        font-size: 0.85rem;
+
+    }
+
+
+    .projects-section {
+
+        padding: 70px 5%;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size: 2rem;
+
+    }
+
+
+    .project-image {
+
+        height: 220px;
+
+    }
+
+
+    .project-content {
+
+        padding: 22px;
+
+    }
+
+
+    .project-buttons {
+
+        flex-direction: column;
+
+    }
+
+
+    .project-btn {
+
+        justify-content: center;
+
+        width: 100%;
+
+    }
+
+
+    .project-footer {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+}

@@ -1025,12 +1025,9 @@ header {
 /* =========================================================
    SERVICES
 ========================================================= */
-
 .services {
     min-height: 100vh;
-
     padding: 100px 8%;
-
     background:
         linear-gradient(
             135deg,
@@ -1039,57 +1036,41 @@ header {
             rgba(17, 22, 17, 0.88)
         ),
         url("images/bg.png");
-
     background-size: cover;
-
     background-position: center;
-
     background-repeat: no-repeat;
 }
 
 .main-text {
     width: 100%;
     max-width: 1000px;
-
     margin: 0 auto 2.5rem;
-
     text-align: center;
-
     color: var(--hover-color);
 }
 
 .main-text h2 {
     color: var(--text-color);
-
     font-size: 45px;
     font-weight: 700;
-
     margin-bottom: 18px;
-
     letter-spacing: 1px;
 }
 
 .main-text-line {
     width: 80px;
     height: 2px;
-
     margin: 0 auto 20px;
-
     background: var(--hover-color);
 }
 
 .main-text span {
     display: block;
-
     color: var(--text-color);
-
     font-size: 0.8rem;
     font-weight: 300;
-
     letter-spacing: 1px;
-
     text-transform: uppercase;
-
     margin-bottom: 6px;
 }
 
@@ -1097,16 +1078,11 @@ header {
 .section-services {
     width: 100%;
     max-width: 1200px;
-
     margin: 0 auto;
-
     display: flex;
-
     justify-content: center;
     align-items: stretch;
-
     flex-wrap: wrap;
-
     gap: 2rem;
 }
 
@@ -1114,17 +1090,11 @@ header {
 .section-services .service-box,
 .service-box {
     flex: 1 1 20rem;
-
     padding: 2rem 1.5rem;
-
     text-align: center;
-
     background: var(--secondary-bg-color);
-
     border: 1px solid #2b302c;
-
     border-radius: 10px;
-
     transition:
         transform 0.3s ease,
         border-color 0.3s ease;
@@ -1132,49 +1102,34 @@ header {
 
 .service-box:hover {
     transform: translateY(-5px);
-
     border-color: var(--hover-color);
 }
 
 .service-box .service-icon {
     width: 72px;
     height: 72px;
-
     margin: 0 auto 10px;
-
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     background: transparent;
-
     color: var(--hover-color);
-
     border: 2px solid var(--hover-color);
-
     border-radius: 50%;
-
     font-size: 2rem;
 }
 
 .service-box h3 {
     color: var(--text-color);
-
     margin-top: 10px;
-
     font-size: 1.35rem;
-
     font-weight: 600;
 }
 
 .service-box p {
     margin: 0.6rem 0 0;
-
     color: var(--text-color);
-
     font-size: 0.9rem;
-
     line-height: 1.6;
 }
 
@@ -1182,14 +1137,10 @@ header {
 /* =========================================================
    SKILLS
 ========================================================= */
-
 .skills {
     margin: 0;
-
     min-height: 100vh;
-
     padding: 100px 8%;
-
     background:
         linear-gradient(
             135deg,
@@ -1197,7 +1148,6 @@ header {
             #080b0a 45%,
             #121a13 100%
         );
-
     color: var(--text-color);
 }
 
