@@ -1,7 +1,3 @@
-/* =====================================================
-   AI & ROBOTICS PROJECTS PAGE
-===================================================== */
-
 
 /* =====================================================
    GLOBAL
@@ -13,11 +9,9 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
-
 
 body {
     font-family: "Poppins", sans-serif;
@@ -39,8 +33,6 @@ body {
     --bg-color: #080b0a;
 
     --secondary-bg: #151a14;
-
-    --card-bg: #10140f;
 
     --lemon: #d9ff00;
 
@@ -76,7 +68,6 @@ body {
     position: relative;
 
     z-index: 100;
-
 }
 
 
@@ -99,7 +90,6 @@ body {
     font-size: 1.2rem;
 
     font-weight: 600;
-
 }
 
 
@@ -122,7 +112,6 @@ body {
     color: var(--lemon);
 
     font-weight: 700;
-
 }
 
 
@@ -151,7 +140,6 @@ body {
     font-size: 0.9rem;
 
     transition: 0.3s ease;
-
 }
 
 
@@ -160,7 +148,6 @@ body {
     background: var(--lemon);
 
     color: #080b0a;
-
 }
 
 
@@ -170,15 +157,15 @@ body {
 
 .projects-hero {
 
-    min-height: 55vh;
+    min-height: 65vh;
 
-    display: flex;
+    display: grid;
+
+    grid-template-columns: 1fr 0.8fr;
 
     align-items: center;
 
-    justify-content: center;
-
-    text-align: center;
+    gap: 60px;
 
     padding: 80px 8%;
 
@@ -190,6 +177,7 @@ body {
 
     position: relative;
 
+    overflow: hidden;
 }
 
 
@@ -221,7 +209,6 @@ body {
     background-size: 65px 65px;
 
     pointer-events: none;
-
 }
 
 
@@ -231,12 +218,11 @@ body {
 
 .hero-content {
 
-    max-width: 800px;
+    max-width: 700px;
 
     position: relative;
 
     z-index: 1;
-
 }
 
 
@@ -249,7 +235,6 @@ body {
     font-weight: 600;
 
     letter-spacing: 3px;
-
 }
 
 
@@ -260,7 +245,6 @@ body {
     font-size: clamp(2.5rem, 6vw, 5rem);
 
     line-height: 1.1;
-
 }
 
 
@@ -272,8 +256,7 @@ body {
 
     background: var(--lemon);
 
-    margin: 25px auto;
-
+    margin: 25px 0;
 }
 
 
@@ -281,12 +264,45 @@ body {
 
     max-width: 650px;
 
-    margin: auto;
-
     color: var(--muted-text);
 
     line-height: 1.8;
+}
 
+
+/* =====================================================
+   HERO IMAGE
+===================================================== */
+
+.hero-image {
+
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.hero-image img {
+
+    width: 100%;
+
+    max-width: 520px;
+
+    height: 400px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    border: 1px solid var(--border-color);
+
+    display: block;
 }
 
 
@@ -297,14 +313,12 @@ body {
 .projects-section {
 
     padding: 90px 8%;
-
 }
 
 
 .upcoming-section {
 
     background: var(--secondary-bg);
-
 }
 
 
@@ -319,7 +333,6 @@ body {
     max-width: 700px;
 
     margin: 0 auto 55px;
-
 }
 
 
@@ -332,7 +345,6 @@ body {
     font-weight: 600;
 
     letter-spacing: 3px;
-
 }
 
 
@@ -341,7 +353,6 @@ body {
     font-size: 2.5rem;
 
     margin-top: 10px;
-
 }
 
 
@@ -354,7 +365,6 @@ body {
     background: var(--lemon);
 
     margin: 18px auto;
-
 }
 
 
@@ -363,7 +373,6 @@ body {
     color: var(--muted-text);
 
     line-height: 1.7;
-
 }
 
 
@@ -385,7 +394,6 @@ body {
         repeat(2, minmax(0, 1fr));
 
     gap: 30px;
-
 }
 
 
@@ -395,7 +403,7 @@ body {
 
 .project-card {
 
-    background: var(--card-bg);
+    background: #10140f;
 
     border: 1px solid var(--border-color);
 
@@ -408,7 +416,6 @@ body {
         border-color 0.35s ease;
 
     position: relative;
-
 }
 
 
@@ -417,7 +424,6 @@ body {
     transform: translateY(-8px);
 
     border-color: var(--lemon);
-
 }
 
 
@@ -436,7 +442,6 @@ body {
     overflow: hidden;
 
     background: #0d100c;
-
 }
 
 
@@ -451,14 +456,12 @@ body {
     display: block;
 
     transition: transform 0.5s ease;
-
 }
 
 
 .project-card:hover .project-image img {
 
     transform: scale(1.05);
-
 }
 
 
@@ -483,16 +486,6 @@ body {
     font-weight: 600;
 
     background: rgba(8, 11, 10, 0.9);
-
-}
-
-
-.project-status.completed {
-
-    color: var(--lemon);
-
-    border: 1px solid var(--lemon);
-
 }
 
 
@@ -501,7 +494,6 @@ body {
     color: #fff;
 
     border: 1px solid rgba(255,255,255,0.3);
-
 }
 
 
@@ -512,7 +504,6 @@ body {
 .project-content {
 
     padding: 28px;
-
 }
 
 
@@ -525,7 +516,6 @@ body {
     font-weight: 600;
 
     letter-spacing: 2px;
-
 }
 
 
@@ -534,7 +524,6 @@ body {
     font-size: 1.5rem;
 
     margin: 8px 0 12px;
-
 }
 
 
@@ -547,7 +536,6 @@ body {
     line-height: 1.7;
 
     margin-bottom: 20px;
-
 }
 
 
@@ -563,8 +551,7 @@ body {
 
     gap: 8px;
 
-    margin-bottom: 25px;
-
+    margin-bottom: 5px;
 }
 
 
@@ -581,74 +568,6 @@ body {
     color: #dce0d6;
 
     font-size: 0.72rem;
-
-}
-
-
-/* =====================================================
-   PROJECT BUTTONS
-===================================================== */
-
-.project-buttons {
-
-    display: flex;
-
-    gap: 10px;
-
-    flex-wrap: wrap;
-
-}
-
-
-.project-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding: 10px 16px;
-
-    border: 1px solid var(--lemon);
-
-    border-radius: 5px;
-
-    color: var(--lemon);
-
-    text-decoration: none;
-
-    font-size: 0.8rem;
-
-    transition: 0.3s ease;
-
-}
-
-
-.project-btn:hover {
-
-    background: var(--lemon);
-
-    color: #080b0a;
-
-}
-
-
-.github-btn {
-
-    border-color: rgba(255,255,255,0.25);
-
-    color: #fff;
-
-}
-
-
-.github-btn:hover {
-
-    background: #fff;
-
-    color: #080b0a;
-
 }
 
 
@@ -659,7 +578,6 @@ body {
 .upcoming-card {
 
     opacity: 0.9;
-
 }
 
 
@@ -670,7 +588,6 @@ body {
     align-items: center;
 
     justify-content: center;
-
 }
 
 
@@ -687,14 +604,12 @@ body {
     gap: 12px;
 
     color: #777b73;
-
 }
 
 
 .coming-soon i {
 
     font-size: 3rem;
-
 }
 
 
@@ -705,35 +620,6 @@ body {
     letter-spacing: 2px;
 
     text-transform: uppercase;
-
-}
-
-
-/* =====================================================
-   IMAGE ERROR
-===================================================== */
-
-.project-image.image-error {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-}
-
-
-.project-image.image-error::after {
-
-    content: "Project Image";
-
-    color: #777b73;
-
-    font-size: 0.85rem;
-
-    letter-spacing: 1px;
-
 }
 
 
@@ -750,7 +636,6 @@ body {
     transition:
         opacity 0.6s ease,
         transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-
 }
 
 
@@ -759,7 +644,6 @@ body {
     opacity: 1;
 
     transform: scale(1);
-
 }
 
 
@@ -780,7 +664,6 @@ body {
     justify-content: space-between;
 
     gap: 20px;
-
 }
 
 
@@ -789,7 +672,6 @@ body {
     color: var(--muted-text);
 
     font-size: 0.8rem;
-
 }
 
 
@@ -800,7 +682,6 @@ body {
     text-decoration: none;
 
     font-size: 0.85rem;
-
 }
 
 
@@ -815,14 +696,36 @@ body {
         grid-template-columns: 1fr;
 
         max-width: 650px;
-
     }
 
 
     .projects-hero {
 
-        min-height: 45vh;
+        grid-template-columns: 1fr;
 
+        text-align: center;
+
+        min-height: 60vh;
+    }
+
+
+    .hero-content {
+
+        margin: auto;
+    }
+
+
+    .hero-line {
+
+        margin: 25px auto;
+    }
+
+
+    .hero-image img {
+
+        height: 350px;
+
+        max-width: 500px;
     }
 
 }
@@ -837,14 +740,12 @@ body {
     .project-header {
 
         padding: 18px 5%;
-
     }
 
 
     .logo {
 
         font-size: 1rem;
-
     }
 
 
@@ -853,7 +754,6 @@ body {
         width: 38px;
 
         height: 30px;
-
     }
 
 
@@ -862,7 +762,6 @@ body {
         padding: 8px 12px;
 
         font-size: 0.75rem;
-
     }
 
 
@@ -870,64 +769,51 @@ body {
 
         padding: 70px 5%;
 
+        gap: 40px;
     }
 
 
     .hero-content h1 {
 
         font-size: 2.4rem;
-
     }
 
 
     .hero-content p {
 
         font-size: 0.85rem;
+    }
 
+
+    .hero-image img {
+
+        height: 280px;
+
+        width: 100%;
     }
 
 
     .projects-section {
 
         padding: 70px 5%;
-
     }
 
 
     .section-heading h2 {
 
         font-size: 2rem;
-
     }
 
 
     .project-image {
 
         height: 220px;
-
     }
 
 
     .project-content {
 
         padding: 22px;
-
-    }
-
-
-    .project-buttons {
-
-        flex-direction: column;
-
-    }
-
-
-    .project-btn {
-
-        justify-content: center;
-
-        width: 100%;
-
     }
 
 
@@ -936,7 +822,6 @@ body {
         flex-direction: column;
 
         text-align: center;
-
     }
 
 }

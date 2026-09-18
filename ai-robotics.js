@@ -1,3 +1,4 @@
+
 /* =====================================================
    AI & ROBOTICS PROJECTS PAGE
 ===================================================== */
@@ -8,7 +9,6 @@
 ===================================================== */
 
 const popElements = document.querySelectorAll(".pop-in");
-
 
 const popObserver = new IntersectionObserver(
     (entries) => {
