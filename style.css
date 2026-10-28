@@ -49,6 +49,26 @@ img {
     max-width: 100%;
 }
 
+/* Scroll Progress Bar */
+.scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    z-index: 99999;
+}
+
+.scroll-progress-bar {
+    width: 100%;
+    height: 100%;
+    background: #d9ff00;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.1s linear;
+}
+
 
 /* =========================================================
    HERO / TOP AREA
@@ -3512,6 +3532,54 @@ header {
 }
 
 
+/* Smart Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d9ff00;
+    color: #080b0a;
+
+    border: none;
+    border-radius: 50%;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: #ffffff;
+    transform: translateY(-5px);
+}
+
+@media (max-width: 600px) {
+    .back-to-top {
+        width: 42px;
+        height: 42px;
+        right: 18px;
+        bottom: 20px;
+    }
+}
 /* =========================================================
    SMALL PHONES
 ========================================================= */

@@ -1,3 +1,27 @@
+// Scroll Progress Bar
+const scrollProgress = document.getElementById("scrollProgress");
+
+function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const scrollHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+    const progress = scrollHeight > 0
+        ? scrollTop / scrollHeight
+        : 0;
+
+    scrollProgress.style.transform = `scaleX(${progress})`;
+}
+
+window.addEventListener("scroll", updateScrollProgress, {
+    passive: true
+});
+
+window.addEventListener("resize", updateScrollProgress);
+
+updateScrollProgress();
+
+
 /* =========================================================
    DOM READY
 ========================================================= */
@@ -703,4 +727,23 @@ const popObserver = new IntersectionObserver(
 
 popElements.forEach((element) => {
     popObserver.observe(element);
+});
+
+// Smart Back to Top Button
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+        backToTop.classList.add("show");
+    } else {
+        backToTop.classList.remove("show");
+    }
+}, { passive: true });
+
+// Scroll smoothly to the top
+backToTop.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 });
