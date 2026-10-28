@@ -1355,6 +1355,191 @@ header {
 }
 
 
+/* =====================================
+   AWARDS & ACHIEVEMENTS
+===================================== */
+
+.awards-section {
+    padding: 100px 8%;
+    background: #080b0a;
+}
+
+/* SECTION HEADING */
+
+.awards-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+}
+
+.awards-heading span {
+    color: #d9ff00;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.awards-heading h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-top: 12px;
+}
+
+.awards-line {
+    width: 65px;
+    height: 3px;
+    background: #d9ff00;
+    margin: 20px auto;
+}
+
+.awards-heading p {
+    color: #a9aaa5;
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+/* AWARDS GRID */
+
+.awards-container {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+/* AWARD CARD */
+
+.award-card {
+    background: #10140f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+
+    padding: 35px 28px;
+
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+}
+
+.award-card:hover {
+    transform: translateY(-8px);
+    border-color: #d9ff00;
+    background: #151a14;
+}
+
+/* AWARD ICON */
+
+.award-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    background: rgba(217, 255, 0, 0.08);
+    border: 1px solid rgba(217, 255, 0, 0.2);
+
+    margin-bottom: 25px;
+}
+
+.award-icon i {
+    font-size: 1.8rem;
+    color: #d9ff00;
+}
+
+/* AWARD TYPE */
+
+.award-type {
+    display: inline-block;
+    color: #d9ff00;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.achievement-type {
+    color: #fff;
+}
+
+/* AWARD DETAILS */
+
+.award-card h3 {
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.award-card p {
+    color: #a9aaa5;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+/* AWARD FOOTER */
+
+.award-footer {
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.award-footer span {
+    color: #d9ff00;
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.award-footer i {
+    font-size: 0.9rem;
+}
+
+/* TABLET */
+
+@media (max-width: 950px) {
+    .awards-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .awards-section {
+        padding: 75px 5%;
+    }
+
+    .awards-heading h2 {
+        font-size: 2rem;
+    }
+
+    .awards-heading p {
+        font-size: 0.85rem;
+    }
+
+    .awards-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .award-card {
+        padding: 28px 23px;
+    }
+}
+
+
+
 /* =========================================================
    CONTACT SECTION
 ========================================================= */
