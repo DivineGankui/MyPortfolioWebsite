@@ -555,23 +555,19 @@ header {
 
 .home-image {
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     margin-top: 5px;
+
+    animation: gentleFloat 6s ease-in-out infinite;
 }
 
 .profile-image {
     width: 190px;
     height: 190px;
-
     margin: 0 auto;
-
     border-radius: 50%;
-
     overflow: hidden;
-
     border: 3px solid var(--text-color);
 
     transition:
@@ -582,18 +578,47 @@ header {
 .profile-image img {
     width: 100%;
     height: 100%;
-
     display: block;
-
     object-fit: cover;
+
+    animation: breathingZoom 8s ease-in-out infinite;
+    will-change: transform;
 }
 
 .profile-image:hover {
     transform: scale(1.03);
-
     border-color: var(--hover-color);
 }
 
+/* SLOW ZOOM IN AND OUT */
+@keyframes breathingZoom {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* GENTLE FLOATING MOVEMENT */
+@keyframes gentleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+    .home-image,
+    .profile-image img {
+        animation: none;
+    }
+}
 
 /* =========================================================
    ABOUT SECTION
