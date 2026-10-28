@@ -826,6 +826,137 @@
 </button>
 
 
+<!-- ================= PORTFOLIO AI ASSISTANT ================= -->
+
+<div class="ai-chat-widget">
+
+    <!-- Floating Chat Button -->
+    <button class="ai-chat-toggle" id="aiChatToggle" aria-label="Open portfolio assistant">
+        <i class="fas fa-comment-dots"></i>
+        <span class="chat-status-dot"></span>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="ai-chat-window" id="aiChatWindow">
+
+        <!-- Header -->
+        <div class="ai-chat-header">
+
+            <div class="ai-chat-profile">
+
+                <div class="ai-avatar">
+                    <img src="images/pic ai.png" alt="Divine AI Assistant">
+                    <span></span>
+                </div>
+
+                <div class="ai-chat-info">
+                    <h3>Divine AI Assistant</h3>
+                    <p>
+                        <span class="online-indicator"></span>
+                        Online · Here to help
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="ai-chat-actions">
+
+                <button id="aiChatClear" aria-label="Clear conversation">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+
+                <button id="aiChatClose" aria-label="Close chat">
+                    <i class="fas fa-times"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Messages -->
+        <div class="ai-chat-messages" id="aiChatMessages">
+
+            <!-- Welcome Message -->
+            <div class="ai-message assistant-message">
+
+                <div class="message-avatar">
+                    <img src="images/pic ai.png" alt="Divine">
+                </div>
+
+                <div class="message-content">
+                    <p>Hello! 👋 Welcome to Divine Gankui's portfolio.</p>
+
+                    <p>
+                        I'm Divine's virtual assistant. I can tell you about
+                        his skills, projects, services, achievements and
+                        professional experience. How can I help you today?
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Suggested Questions -->
+            <div class="ai-suggestions" id="aiSuggestions">
+
+                <p>Quick questions</p>
+
+                <button class="suggestion-btn" data-question="Who is Divine Gankui?">
+                    Who is Divine?
+                </button>
+
+                <button class="suggestion-btn" data-question="What services does Divine offer?">
+                    His services
+                </button>
+
+                <button class="suggestion-btn" data-question="What projects has Divine developed?">
+                    His projects
+                </button>
+
+                <button class="suggestion-btn" data-question="How can I hire Divine?">
+                    Hire Divine
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Typing Indicator -->
+        <div class="ai-typing" id="aiTyping">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Input -->
+        <form class="ai-chat-input-area" id="aiChatForm">
+
+            <input
+                type="text"
+                id="aiChatInput"
+                placeholder="Ask Divine's assistant anything..."
+                autocomplete="off"
+                maxlength="2000"
+                required
+            >
+
+            <button type="submit" id="aiChatSend" aria-label="Send message">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+
+        </form>
+
+        <!-- Footer -->
+        <div class="ai-chat-footer">
+            Powered by <span>Divine's Portfolio Assistant</span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= END PORTFOLIO AI ASSISTANT ================= -->
+
+
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
